@@ -1,0 +1,5 @@
+<h1>Editable Regions</h1>
+
+<?php foreach($this->regions as $region): ?>
+	<p><span style="display: inline-block; width: 200px;"><?=$region['slug']?></span> <a href="/pagebuilder/editcontent/id/<?=$region['content_id']?>" class="button">Edit</a></p>
+<?php endforeach; ?>

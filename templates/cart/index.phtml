@@ -1,0 +1,70 @@
+<?php if(!empty($this->basket['releases']) || !empty($this->basket['tracks'])): ?>
+    <?php $i = 1; ?>
+    <form method="post" action="https://www.paypal.com/cgi-bin/webscr">
+    <input type="hidden" value="_cart" name="cmd">
+    <input type="hidden" value="1" name="upload">
+    <input type="hidden" value="payments@higherrhythm.co.uk" name="business">
+    <input type="hidden" value="GBP" name="currency_code">
+    <input type="hidden" value="http://www.circuitrecords.co.uk/paypal" name="notify_url">
+    <input type="hidden" value="http://www.circuitrecords.co.uk/view/paypal-thank-you" name="return">
+    <input type="hidden" value="http://www.circuitrecords.co.uk/images/paypal_logo.jpg" name="image_url">
+    <table id="cart">
+        <tr align="left">
+            <th width="120px">Title</th>
+            <th width="120px">Artist</th>
+            <th width="120px">Type</th>
+            <th width="120px">Price</th>
+            <th>&nbsp;</th>
+        </tr>
+        <?php if(!empty($this->basket['releases'])): ?>
+            <tr>
+                <td colspan="5" class="heading">Releases</td>
+            </tr>
+            <?php foreach($this->basket['releases'] as $release): ?>
+                <tr align="left">
+                    <td><a href="/releases/view/release/<?=$release['release_id']?>"><?=$release['title']?></a></td>
+                    <td><a href="/artists/view/artist/<?=$release['artist_id']?>"><?=$release['artist']?></a></td>
+                    <td><?=$release['type']?></td>
+                    <td>
+                        &pound;<?=$release['full_price']?>
+                        <input type="hidden" value="1" name="add_<?=$i?>">
+                        <input type="hidden" value="<?=$release['artist']?> - <?=$release['title']?>" name="item_name_<?=$i?>">
+                        <input type="hidden" value="REL_<?=$release['release_id']?>" name="item_number_<?=$i?>">
+                        <input type="hidden" value="<?=$release['full_price']?>" name="amount_<?=$i?>">
+                    </td>
+                    <td><a href="/cart/removefromcart/release/<?=$release['release_id']?>">remove</a></td>
+                </tr>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <?php if(!empty($this->basket['tracks'])): ?>
+            <tr>
+                <td colspan="5" class="heading">Tracks</td>
+            </tr>
+            <?php foreach($this->basket['tracks'] as $track): ?>
+                <tr align="left">
+                    <td><a href="/releases/view/release/<?=$track['release_id']?>"><?=$track['name']?></a></td>
+                    <td><a href="/artists/view/artist/<?=$track['artist_id']?>"><?=$track['artist']?></a></td>
+                    <td>Selected Track</td>
+                    <td>
+                        &pound;<?=$track['price']?>
+                        <input type="hidden" value="1" name="add_<?=$i?>">
+                        <input type="hidden" value="<?=$track['artist']?> - <?=$track['name']?>" name="item_name_<?=$i?>">
+                        <input type="hidden" value="TRA_<?=$track['track_id']?>" name="item_number_<?=$i?>">
+                        <input type="hidden" value="<?=$track['price']?>" name="amount_<?=$i?>">
+                    </td>
+                    <td><a href="/cart/removefromcart/track/<?=$track['track_id']?>">remove</a></td>
+                </tr>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </table>
+    
+    <h3>Where would you like your download code sending?</h3>
+    <p>E-Mail: <input type="text" name="custom" class="form_content textfield" /></p>
+    
+    <p id="buybutton"><input type="submit" style="cursor: pointer;" class="submitbutton" value="Pay Now"></p>
+    </form>
+<?php else: ?>
+    <p>You currently do not have any items in your basket.</p>
+<?php endif; ?>

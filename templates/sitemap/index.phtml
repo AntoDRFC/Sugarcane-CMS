@@ -1,0 +1,33 @@
+<ul id="sitemap">
+    <?php foreach($this->pages as $page): ?>
+        <li>
+            <?php if($page['type'] == 'page'): ?>
+                <a href="<?=$this->siteurl?><?php if($page['permalink'] != 'index'): ?>/<?=$page['permalink']?><?php endif; ?>"><?=$page['menu_text']?></a>
+            <?php else: ?>
+                <a href="<?=$this->siteurl?><?=$page['permalink']?>"><?=$page['menu_text']?></a>
+            <?php endif; ?>
+        </li>
+        <?php if($page['permalink'] == '/artists'): ?>
+            <li>
+                <ul>
+                    <?php foreach($this->artists as $artist): ?>
+                        <li>
+                            <a href="<?=$this->siteurl?>/artists/view/artist/<?=$artist['artist_id']?>"><?=$artist['name']?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+        <?php endif; ?>
+        <?php if($page['permalink'] == '/releases'): ?>
+            <li>
+                <ul>
+                    <?php foreach($this->releases as $release): ?>
+                        <li>
+                            <a href="<?=$this->siteurl?>/releases/view/release/<?=$release['release_id']?>"><?=$release['title']?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>

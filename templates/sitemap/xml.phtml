@@ -1,0 +1,30 @@
+<?php echo '<?xml version="1.0" encoding="UTF-8"?>';?>
+<urlset xmlns="<?=$this->siteurl?>/sitemap">
+    <?php foreach($this->pages as $page): ?>
+        <url>
+            <?php if($page['type'] == 'page'): ?>
+                <loc><?=$this->siteurl?><?php if($page['permalink'] != 'index'): ?>/<?=$page['permalink']?><?php endif; ?></loc>
+            <?php else: ?>
+                <loc><?=$this->siteurl?><?=$page['permalink']?></loc>
+            <?php endif; ?>
+            <lastmod><?=$page['last_update']?></lastmod>
+            <changefreq>monthly</changefreq>
+        </url>
+        <?php if($page['permalink'] == '/artists'): ?>
+            <?php foreach($this->artists as $artist): ?>
+                <url>
+                    <loc><?=$this->siteurl?>/artists/view/artist/<?=$artist['artist_id']?></loc>
+                    <lastmod><?=$artist['last_update']?></lastmod>
+                </url>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <?php if($page['permalink'] == '/releases'): ?>
+            <?php foreach($this->releases as $release): ?>
+                <url>
+                    <loc><?=$this->siteurl?>/releases/view/release/<?=$release['release_id']?></loc>
+                    <lastmod><?=$release['last_update']?></lastmod>
+                </url>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</urlset> 

@@ -1,0 +1,86 @@
+.sortablelist {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 0px 4px;
+    list-style: none;
+}
+.sortablelist li {
+    padding: 2px 0;
+}
+.sortablelist span, .sortablelist span a, .button {
+    display: inline-block;
+}
+
+.sortablelist .pagetitle {
+    width: 240px;
+    cursor: move;
+}
+.sortablelist a, .button {
+    background-color: #545042;
+	color: #ffffff;
+    padding: 5px 10px 5px 5px;
+    -moz-border-radius-topright: 16px;
+    border-top-right-radius: 16px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+    width: 75px;
+}
+.sortablelist a:hover, .button:hover {
+    background-color: #b19f79;
+    color: #545042;
+    text-decoration: none;
+}
+
+.subpages {
+/*     margin: 0 0 0 20px; */
+    padding: 0;
+    list-style: none;
+    
+    /* DEBUG: For sortable list */
+    /*
+    border: 1px dashed #2B2B2B;
+    padding: 10px;
+    */
+}
+.subpages li {
+    /* border: 1px solid #9e4; */
+    margin: 2px 0;
+}
+.subpages .pagetitle {
+/*     width: 280px; */
+    text-indent: 20px;
+}
+.ui-state-highlight {
+    height: 24px;
+    border: 1px dashed #ECECEC;
+}
+.placeholder {
+    border: 1px dotted #f9e;
+    height: 20px;
+}
+
+#moveform {
+    display: inline-block;
+}
+
+.form textarea {
+    width: 450px;
+    height: 120px;
+}
+.form .metainput {
+    width: 450px;
+    border: 1px solid #999999;
+}
+
+#tooltip{
+	position:absolute;
+	display:none;
+    z-index: 10;
+    top: -20px;
+    left: -20px;
+    text-align: center;
+	border:3px solid #7078B5;
+    -moz-border-radius: 6px;
+	background: #44496F;
+	padding:4px 7px;
+	color:#FFFFFF;
+}

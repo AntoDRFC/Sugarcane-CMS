@@ -1,0 +1,24 @@
+<h1>Tracks for {release name}</h1>
+<p><a href="/admin/tracks/edit/release/<?=$this->release_id?>">Add track to this release</a></p>
+<table class="admintable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th class="title">Track Name</th>
+            <th>Price</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if($this->tracks): ?>
+        <?php foreach($this->tracks as $track): ?>
+            <tr>
+                <td><?=$track['track_number']?></td>
+                <td><?=$track['name']?></td>
+                <td>&pound;<?=$track['price']?></td>
+                <td><a href="/admin/tracks/edit/track/<?=$track['track_id']?>">Edit</a> <a href="/admin/tracks/delete/track/<?=$track['track_id']?>/release/<?=$this->release_id?>" class="deleteitem">Delete</a></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>

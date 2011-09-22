@@ -1,0 +1,24 @@
+<h1>News</h1>
+<p><a href="/admin/news/edit/">Add News Item</a></p>
+<table class="admintable">
+    <thead>
+        <tr>
+            <th class="title">News Title</th>
+            <th>News Date</th>
+            <th>Published</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(count($this->newsitems)): ?>
+        <?php foreach($this->newsitems as $newsitem): ?>
+            <tr>
+                <td><?=$newsitem['title']?></td>
+                <td><?=date('d/m/Y', strtotime($newsitem['newsdate']))?></td>
+                <td><?=($newsitem['published'] == 1) ? 'Yes' : 'No'?></td>
+                <td><a href="/admin/news/edit/newsitem/<?=$newsitem['news_id']?>">Edit</a> <a href="/admin/news/delete/newsitem/<?=$newsitem['news_id']?>" class="deleteitem">Delete</a></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>

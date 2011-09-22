@@ -1,0 +1,10 @@
+<h2><?=$this->newsitem['title']?><span><?=date('jS F Y', strtotime($this->newsitem['newsdate']))?></span></h2>
+<?php if(!empty($this->newsitem['news_image'])): ?>
+<div id="newsimage">
+    <?php $imageinfo = getimagesize($this->location . '/' . $this->newsitem['news_image']); ?>
+    <img src="<?=$this->newsitem['news_image']?>" <?=$imageinfo[3]?> alt="<?=$this->newsitem['title']?>" />
+</div>
+<?php endif; ?>
+<p><?=$this->newsitem['content']?></p>
+
+<p id="backtonews"><a href="/news" class="button">Back to news</a></p>

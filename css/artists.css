@@ -1,0 +1,32 @@
+.artist {
+    overflow: hidden;
+    border-bottom: 1px dotted #3f8795;
+    padding-bottom: 16px;
+}
+
+.artist_image {
+    float: left;
+    margin-right: 10px;
+}
+
+.view_artist_bio {
+    margin-bottom: 0;
+    clear: both;
+/*     text-align: right; */
+/*     clear: both; */
+}
+
+#maincontent p.release_info, #maincontent p.download_tracks {
+    margin: 0 0 3px 0;
+    line-height: 14px;
+}
+
+.release {
+    width: 146px;
+    float: left;
+    margin: 0 15px 20px 0;
+}
+
+#backtoartists {
+    clear: both;
+}

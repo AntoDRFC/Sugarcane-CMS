@@ -1,0 +1,25 @@
+<form method="post" action="/apply/loginparttwo/">
+    <p>Please enter your Email and Passcode to continue with your application.</p>
+    <?php if(count($this->formdata['errors'])): ?>
+        <div id="errors">
+            <p><strong><?=count($this->formdata['errors'])?> error<?php if(count($this->formdata['errors']) > 1): ?>s were<?php else: ?> was<?php endif; ?>  encountered in your login</strong><br />Please correct these errors and submit the form again.</p>
+            <ul>
+                <?php foreach($this->formdata['errors'] as $error): ?>
+                    <li><?=$error?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+    <div class="form_field">
+        <label class="form_desc" for="organisation">Email</label>
+        <input type="text" name="email" class="form_content textfield">
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="passcode">Passcode</label>
+        <input type="password" name="passcode" class="form_content textfield">
+    </div>
+    <div class="submitarea">
+        <input type="submit" value="Login" />
+    </div>
+</form>
+

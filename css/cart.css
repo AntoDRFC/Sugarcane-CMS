@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+}
+
+th {
+    text-align: left;
+    background-color: #3F8795;
+    color: #ffffff;
+    padding: 2px 5px;
+}
+
+td {
+    padding: 2px 5px;
+}
+
+td.heading {
+    font-weight: bold;
+}
+
+#buybutton {
+    float: right;
+}

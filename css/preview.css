@@ -1,0 +1,27 @@
+html {
+    margin-top: 60px;
+}
+
+#cmsbarwrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url(/images/border_img.gif) bottom left repeat-x;
+}
+#cmsbar {
+    overflow: hidden;
+    padding: 6px 10px 15px 10px;
+}
+
+#cmsbar img {
+    float: left;
+}
+
+.closewindow {
+    color: #424b6e;
+    cursor: pointer;
+}
+.closewindow:hover {
+    color: #a5a9c2;
+}

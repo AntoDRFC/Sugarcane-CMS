@@ -1,0 +1,42 @@
+<h1>Change Page Headers</h1>
+
+<form method="post" action="/pagebuilder/saveheaderimage/" enctype="multipart/form-data">
+    <ul class="form">
+        <?php if(count($this->header_images) == 5): ?>
+            <li>
+                <p>The maximum of 5 header images has been met, please remove an image before uploading another.</p>
+            </li>
+        <?php else: ?>
+            <li>
+                <span class="desc">Upload Image</span>
+                <input type="file" name="image" />
+            </li>
+            <li>
+                <span class="desc">Image Url</span>
+                <input type="text" name="url" />
+            </li>
+            <li class="submitarea">
+                <input type="submit" name="submitbutton" value="save changes" />
+            </li>
+        <?php endif; ?>
+	</ul>
+</form>
+	<ul class="form">
+        <?php $i = 1; foreach($this->header_images as $image): ?>
+            <li>
+                <?php if(!$image['url']): ?>
+                    <img src="/images/header-images/<?=$image['image']?>" width="176" height="176" alt="" />
+                <?php else: ?>
+                    <a href="<?=$image['url']?>" title="<?=$image['url']?>"><img src="/images/header-images/<?=$image['image']?>" width="176" height="176" alt="" /></a>
+                <?php endif; ?>
+                <div class="header_options">
+                    <a href="/pagebuilder/removeheaderimage/id/<?=$image['header_id']?>">remove image</a>
+                    <?php if($i > 1): ?><a href="/pagebuilder/moveheaderimageup/id/<?=$image['header_id']?>"><img src="/images/moveup.png" alt="move up" width="12" height="14" /></a><?php endif; ?>
+                    <?php if($i < count($this->header_images)): ?><a href="/pagebuilder/moveheaderimagedown/id/<?=$image['header_id']?>"><img src="/images/movedown.png" alt="move down" width="12" height="14" /></a><?php endif; ?>
+                </div>
+					<form method="post" style="display: block;">
+						<label>Url: <input type="text" value="<?=$image['url']?>" /> <input type="submit" name="submit" value="update" />
+					</form>
+            </li>
+        <?php $i++; endforeach; ?>
+    </ul>

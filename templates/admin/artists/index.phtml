@@ -1,0 +1,32 @@
+<h1>Artists</h1>
+<p><a href="/admin/artists/edit/">Add Artist</a></p>
+<table class="admintable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(count($this->artists)): ?>
+        <?php
+        $i = 1;
+        foreach($this->artists as $artist): ?>
+            <tr>
+                <td><?=$artist['name']?></td>
+                <td><?=substr($artist['short_description'], 0, 40)?>...</td>
+                <td>
+                    <a href="/admin/artists/edit/artist/<?=$artist['artist_id']?>">Edit</a>
+                    <a href="/admin/artists/delete/artist/<?=$artist['artist_id']?>" class="deleteitem">Delete</a>
+                    <?php if($i > 1): ?><a href="/admin/artists/moveup/artist/<?=$artist['artist_id']?>"><img src="/images/moveup.png" alt="move up" width="12" height="14" /></a><?php endif; ?>
+                    <?php if($i < count($this->artists)): ?><a href="/admin/artists/movedown/artist/<?=$artist['artist_id']?>"><img src="/images/movedown.png" alt="move down" width="12" height="14" /></a><?php endif; ?>
+                </td>
+            </tr>
+        <?php
+            $i++;
+        endforeach;
+        ?>
+    <?php endif; ?>
+    </tbody>
+</table>

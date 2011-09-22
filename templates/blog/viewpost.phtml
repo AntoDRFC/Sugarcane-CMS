@@ -1,0 +1,70 @@
+<div id="blogpost">
+    <div class="blogpost">
+        <div id="blogpost_left">
+            <div class="blogimage_big">
+                <img src="/images/blogimages/<?=$this->post['post_image']?>" style="border: 3px solid #fff;" width="690px" alt="<?=$this->post['post_title']?>" />
+            </div>
+            <p id="shareon" style="color: #fff">Share this blog post on <a href="http://www.facebook.com/sharer.php?u=<?=$this->siteurl?>/blog/view/<?=$this->post['post_id']?>&t=<?=$this->post['post_title']?>" target="blank"><img src="/images/FACEBOOK.png" width="32" height="32" alt="facebook" /></a><a href="http://twitter.com/home?status=Currently reading: <?=$this->post['post_title']?> at <?=$this->siteurl?>/blog/view/<?=$this->post['post_id']?>" target="blank"><img src="/images/TWITTER.png" width="32" height="32" alt="twitter" /></a></p>
+        </div>
+        <div id="blogpost_right">
+            <div class="blogcontent">
+                <h2 class="blogtitle"><?=$this->post['post_title']?></h2>
+                <?=$this->post['post_content']?>
+            </div>
+        </div>
+        <div id="backtoblog"><a href="/blog/<?=$this->blog_id?>">Back to Latest News</a></div>
+    </div>
+    
+    <div id="comment_area">
+        <h3 style="margin-bottom: 10px;">Comments</h3>
+        <?php if(count($this->comments)): ?>
+            <?php foreach($this->comments as $comment): ?>
+                <div class="comment">
+                    <div class="backtotop"><p><a href="#content">back to top</a></p></div>
+                    <p class="comment_author"><?=$comment['firstname']?> <?=$comment['surname']?> <span>(<?=$comment['email']?>)</span></p>
+                    <p><?=$comment['comment']?></p>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="comment">
+                <p>No comments have been made. Be the first to post a comment by using the form below</p>
+            </div>
+        <?php endif; ?>
+        
+        <div id="post_comment">
+            <h3>Post a comment</h3>
+            <form method="post" action="/blog/postcomment">
+                <input type="hidden" name="post_id" value="<?=$this->post['post_id']?>" />
+                <ul class="form">
+                    <li>
+                        <label class="desc">First name</label>
+                        <input class="field" type="text" name="firstname" />
+                    </li>
+                    <li>
+                        <label class="desc">Last name</label>
+                        <input class="field" type="text" name="lastname" />
+                    </li>
+                    <li>
+                        <label class="desc">Email</label>
+                        <input class="field" type="text" name="email" />
+                    </li>
+                    <li>
+                        <label class="desc">Comment</label>
+                        <textarea name="comment"></textarea>
+                    </li>
+                    <li>
+                        <script type= "text/javascript">
+                        var RecaptchaOptions = {
+                            theme: 'white'
+                        };
+                        </script>
+                        <?=$this->recaptcha?>
+                    </li>
+                    <li>
+                        <input type="submit" name="submit" value="Post comment" />
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>

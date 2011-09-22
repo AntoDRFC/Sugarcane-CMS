@@ -1,0 +1,35 @@
+<h1 style="font-size: 18px;"><?=$this->artist_id ? 'Edit' : 'Add'?> Artist</h1>
+<form method="post" action="/admin/artists/saveartist" enctype="multipart/form-data">
+    <ul class="form">
+        <input type="hidden" name="artist_id" value="<?=$this->artist_id ? $this->artist_id : ''?>" />
+        <li>
+            <label class="desc">Name</label>
+            <input type="text" name="artist_name" value="<?=Globals::ifobjectvarsetor($this->artist, 'name', '')?>" />
+        </li>
+        <li>
+            <label class="desc">Primary image</label>
+            <?php if(Globals::ifobjectvarsetor($this->artist, 'image', '')) { ?>
+            <img src="/images/artistimages/<?=Globals::ifobjectvarsetor($this->artist, 'image', '')?>" alt="<?=Globals::ifobjectvarsetor($this->artist, 'name', '')?>" class="currentimage" />
+            <?php } ?>
+            <input type="file" name="image" id="image" />
+        </li>
+        <li>
+            <label class="desc">Secondary image</label>
+            <?php if(Globals::ifobjectvarsetor($this->artist, 'sec_image', '')) { ?>
+            <img src="/images/artistimages/<?=Globals::ifobjectvarsetor($this->artist, 'sec_image', '')?>" alt="<?=Globals::ifobjectvarsetor($this->artist, 'name', '')?>" class="currentimage" />
+            <?php } ?>
+            <input type="file" name="sec_image" id="sec_image" />
+        </li>
+        <li>
+            <label class="desc">Short description</label>
+            <textarea name="short_desc" class="small_textarea"><?=Globals::ifobjectvarsetor($this->artist, 'short_description', '')?></textarea>
+        </li>
+        <li>
+            <label class="desc">Description</label>
+            <textarea name="description" id="artist_description"><?=Globals::ifobjectvarsetor($this->artist, 'description', '')?></textarea>
+        </li>
+        <li id="submitarea">
+            <input type="submit" value="Save" />
+        </li>
+    </ul>
+</form>

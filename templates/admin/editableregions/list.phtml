@@ -1,0 +1,18 @@
+<h1>Editable Regions</h1>
+
+<table class="admintable">
+    <thead>
+        <tr>
+            <th class="title">Region</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->editableregions as $region): ?>
+        <tr>
+            <td><?=ucfirst($region['slug'])?></td>
+            <td><a href="/admin/editableregions/editcontent/region/<?=$region['content_id']?>" class="button">Edit</a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

@@ -1,0 +1,137 @@
+.blogpost {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.blogimage {
+    border: 1px solid #545142;
+    width: 141px;
+    height: 105px;
+    overflow: hidden;
+}
+
+.blogimage_big {
+    border: 1px solid #545142;
+}
+
+.left .blogimage {
+    float: left;
+    margin-right: 12px;
+}
+
+.right .blogimage {
+    float: right;
+    margin-left: 12px;
+}
+
+.blogimage img {
+    margin-top: -48px;
+    margin-left: -86px;
+}
+
+.blogtitle {
+    font-weight: normal;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.blogsummarycontent {
+    position: relative;
+    width: 699px;
+}
+
+.blogcontent {
+    margin-left: 0px;
+    line-height: 1.6em;
+}
+
+#blogpost_left {
+	margin: 15px 0px;
+    width: 696px;
+}
+#blogpost_right {
+    margin-left: 0px;
+    width: 696px;
+}
+
+h2.blogtitle {
+    font-weight: normal;
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+#shareon {
+    color: #b29f77;
+    text-align: right;
+    margin-top: 6px;
+}
+#shareon a {
+    margin: 0 4px;
+}
+#shareon img {
+    vertical-align: middle;
+}
+
+#backtoblog {
+    text-align: right;
+    margin-top: 20px;
+    padding-top: 5px;
+    border-top: 1px solid #545045;
+    clear: both;
+}
+.backtotop {
+    float: right;
+}
+.backtotop a {
+    color: #cbcbcb;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.comment {
+    background: #ffffff;
+    border: 1px solid #545142;
+    padding: 8px 10px 5px 10px;
+    margin-bottom: 12px;
+}
+.comment_author {
+    font-weight: bold;
+}
+.comment_author span {
+    font-style: italic;
+}
+#post_comment {
+    background: #f4d0e5;
+    border: 1px solid #545142;
+    padding: 10px 12px;
+    width: 350px;
+}
+#comment_area textarea {
+    width: 200px;
+    height: 80px;
+    border: 1px solid #545142;
+}
+
+
+/* Form Styling */
+.form {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.form li {
+    margin: 10px 0;
+}
+.desc {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.field {
+    width: 200px;
+    height: 20px;
+    border: 1px solid #545142;
+}

@@ -1,0 +1,12 @@
+<?php if(count($this->artists)): ?>
+    <?php foreach($this->artists as $artist): ?>
+        <div class="artist">
+            <h2><?=$artist['name']?></h2>
+            <img style="margin-bottom: 10px;" src="/images/artistimages/<?=$artist['image']?>" width="125" height="125" alt="<?=$artist['name']?>" class="artist_image" />
+            <p><?=nl2br($artist['short_description'])?></p>
+            <p class="view_artist_bio"><a href="/artists/view/artist/<?=$artist['artist_id']?>">Read Biogaphy &amp; Hear Music</a></p>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No artists found</p>
+<?php endif; ?>

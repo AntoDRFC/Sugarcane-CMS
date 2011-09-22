@@ -1,0 +1,27 @@
+<div id="blog_header">
+    <?=$this->blog_title ? '<h1>' . $this->blog_title . '</h1>' : '';?>
+    <?=$this->blog_description ? '<p>' . $this->blog_description . '</p>' : '';?>
+</div>
+
+<div id="blogposts">
+    <?php if(count($this->blog_posts)): ?>
+        <?php foreach($this->blog_posts as $post): ?>
+            <div class="blogpost <?=$post['post_imagelocation']?>">
+                <div class="blogimage">
+                    <a href="/blog/view/<?=$post['post_id']?>"><img src="/images/blogimages/<?=$post['post_image']?>" width="328" height="203" alt="<?=$post['post_title']?>" /></a>
+                </div>
+                <div class="blogsummarycontent">
+                    <p class="blogtitle"><a href="/blog/view/<?=$post['post_id']?>"><?=$post['post_title']?></a></p>
+                    <p><?=date('d M', strtotime($post['date_added']))?></p>
+                    <?=$post['post_summary']?>
+                    ...<a href="/blog/view/<?=$post['post_id']?>">More</a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+
+
+
+
+

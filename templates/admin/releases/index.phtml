@@ -1,0 +1,38 @@
+<h1>Releases</h1>
+<p><a href="/admin/releases/edit/">Add Release</a></p>
+<table class="admintable">
+    <thead>
+        <tr>
+            <th>Artist</th>
+            <th style="width: 190px;">Title</th>
+            <th>Type</th>
+            <th>Featured</th>
+            <th>Release Date</th>
+            <th>Tracks</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+    $i = 1;
+    foreach($this->releases as $releases): ?>
+        <tr>
+            <td><?=$releases['name']?></td>
+            <td><?=$releases['title']?></td>
+            <td><?=$releases['type']?></td>
+            <td style="text-align: center;"><?=$releases['featured']?></td>
+            <td><?=date('d/m/Y', strtotime($releases['release_date']))?></td>
+            <td><?=$releases['tracks']?> <a href="/admin/tracks/index/release/<?=$releases['release_id']?>">View</a></td>
+            <td>
+                <a href="/admin/releases/edit/release/<?=$releases['release_id']?>">Edit</a>
+                <a href="/admin/releases/delete/release/<?=$releases['release_id']?>" class="deleteitem">Delete</a>
+                <?php if($i > 1): ?><a href="/admin/releases/moveup/release/<?=$releases['release_id']?>"><img src="/images/moveup.png" alt="move up" width="12" height="14" /></a><?php endif; ?>
+                <?php if($i < count($this->releases)): ?><a href="/admin/releases/movedown/release/<?=$releases['release_id']?>"><img src="/images/movedown.png" alt="move down" width="12" height="14" /></a><?php endif; ?>
+            </td>
+        </tr>
+    <?php
+        $i++;
+    endforeach;
+    ?>
+    </tbody>
+</table>

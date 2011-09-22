@@ -1,0 +1,88 @@
+<h1>Page Builder</h1>
+
+<p><a class="button" href="/pagebuilder/changeheaders" style="width: 130px;">Change header images</a></p>
+
+<?php if(count($this->pages)): ?>
+    <p>Please select the page you wish to manage, to re-order the pages, simply drag and drop the page where you would like it to be shown in the website.</p>
+    <ul class="sortablelist" id="noparent">
+        <?php foreach($this->pages as $page): ?>
+            <li id="page_<?=$page['page_id']?>">
+                <?php if($page['page_id'] > 1 && $page['type'] == 'page'): ?>
+                    <span class="pagetitle"><?=$page['menu_text']?></span><span class="editpage"><a href="/pagebuilder/create/page/<?=$page['page_id']?>/">Edit page</a></span><?php if($this->navType == 'dynamic'): ?><?php if(!$page['published']): ?><span class="publishpage"><a href="/pagebuilder/publish/page/<?=$page['page_id']?>/">Publish page</a></span><?php else: ?><span class="publishpage"><a href="/pagebuilder/disable/page/<?=$page['page_id']?>/">Disable page</a></span><?php endif; ?><?php endif; ?><?php if($this->navType == 'dynamic'): ?><span class="deletepage"><a href="/pagebuilder/deletepage/page/<?=$page['page_id']?>/">Delete page</a></span><?php endif; ?><span class="edittags"><a href="/pagebuilder/tags/page/<?=$page['page_id']?>/">Edit tags</a></span><span class="move button"<?=!empty($page['subpages']) ? ' style="display: ;"' : ''?>>Move</span>
+                <?php elseif($page['type'] == 'link'): ?>
+                    <span class="pagetitle"><img src="/images/external-link.png" width="10" height="10" alt="external link" class="tooltip" title="<?=$page['permalink']?>" /> <?=$page['menu_text']?></span><!-- <span class="editpage"><a href="/pagebuilder/link/page/<?=$page['page_id']?>/">Edit link</a></span> --><?php if(!$page['published']): ?><span class="publishpage"><a href="/pagebuilder/publish/page/<?=$page['page_id']?>/">Enable link</a></span><?php else: ?><span class="publishpage"><a href="/pagebuilder/disable/page/<?=$page['page_id']?>/">Disable link</a></span><?php endif; ?><span class="deletepage"><a href="/pagebuilder/deletepage/page/<?=$page['page_id']?>/">Delete link</a></span>
+                <?php else: ?>
+                    <span class="pagetitle"><?=$page['menu_text']?></span><span class="editpage"><a href="/pagebuilder/create/page/<?=$page['page_id']?>/">Edit page</a></span><span class="edittags"><a href="/pagebuilder/tags/page/<?=$page['page_id']?>/">Edit tags</a></span>
+                <?php endif; ?>
+                <ul class="subpages ui-sortable" id="subpages_page_<?=$page['page_id']?>">
+                    <?php if(!empty($page['subpages'])): ?>
+                        <?php foreach($page['subpages'] as $subpage): ?>
+                            <?php if($subpage['type'] == 'link'): ?>
+                                <li id="page_<?=$subpage['page_id']?>"><span class="pagetitle"><img src="/images/external-link.png" width="10" height="10" alt="external link" class="tooltip" title="<?=$subpage['permalink']?>" /> <?=$subpage['menu_text']?></span><!-- <span class="editpage"><a href="/pagebuilder/link/page/<?=$subpage['page_id']?>/">Edit link</a></span> --><?php if(!$subpage['published']): ?><span class="publishpage"><a href="/pagebuilder/publish/page/<?=$subpage['page_id']?>/">Enable link</a></span><?php else: ?><span class="publishpage"><a href="/pagebuilder/disable/page/<?=$subpage['page_id']?>/">Disable link</a></span><?php endif; ?><span class="deletepage"><a href="/pagebuilder/deletepage/page/<?=$subpage['page_id']?>/">Delete link</a></span></li>
+                            <?php else: ?>
+                                <li id="page_<?=$subpage['page_id']?>"><span class="pagetitle"><?=$subpage['menu_text']?></span><span class="editpage"><a href="/pagebuilder/create/page/<?=$subpage['page_id']?>/">Edit page</a></span><?php if(!$subpage['published']): ?><span class="publishpage"><a href="/pagebuilder/publish/page/<?=$subpage['page_id']?>/">Publish page</a></span><?php else: ?><span class="publishpage"><a href="/pagebuilder/disable/page/<?=$subpage['page_id']?>/">Disable page</a></span><?php endif; ?><span class="deletepage"><a href="/pagebuilder/deletepage/page/<?=$subpage['page_id']?>/">Delete page</a></span><span class="edittags"><a href="/pagebuilder/tags/page/<?=$page['page_id']?>/">Edit tags</a></span><span class="move button">Move</span></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+    
+    <div id="moveform" style="display: none;">
+        <ul class="form">
+            <li class="moveformli">
+                <span><strong>Location</strong></span>
+                <select name="parent" id="parent">
+                    <optgroup label="Main">
+                        <option value="0">Move into main navigation</option>
+                    </optgroup>
+                    <optgroup label="Sub Page/Link">
+                        <?php foreach($this->pages as $page): ?>
+                            <?php if($page['page_id'] > 1 && $page['type'] == 'page'): ?>
+                                <option value="<?=$page['page_id']?>"><?=$page['menu_text']?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </optgroup>
+                </select>
+                <button type="button" id="accept-move">accept</button>
+                <button type="button" id="cancel-move">cancel</button>
+            </li>
+        </ul>
+    </div>
+<?php endif; ?>
+
+<form method="post" action="/pagebuilder/create/" id="createpage">
+    <h2>Create</h2>
+    <ul class="form">
+        <li>
+            <label><input type="radio" name="type" value="page" /> Page</label> <label><input type="radio" name="type" value="link" /> Link</label>
+        </li>
+        <li class="url" style="display: none;">
+            <label class="desc">Menu Text</label>
+            <input type="text" name="menu_text" value="" />
+        </li>
+        <li class="url" style="display: none;">
+            <label class="desc">URL</label>
+            <input type="text" name="url" value="http://" />
+        </li>
+        <li>
+            <span class="desc">Location</span>
+            <select name="parent">
+                <optgroup label="Main">
+                    <option value="0">Add into main navigation</option>
+                </optgroup>
+                <optgroup label="Sub Page/Link">
+                    <?php foreach($this->pages as $page): ?>
+                        <?php if($page['page_id'] > 1 && $page['type'] == 'page'): ?>
+                            <option value="<?=$page['page_id']?>"><?=$page['menu_text']?></option>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </optgroup>
+            </select>
+        </li>
+        <li>
+            <span class="button" id="submit_create">Create</span>
+        </li>
+    </ul>
+</form>

@@ -1,0 +1,24 @@
+<h1>Form Approval</h1>
+
+<table class="admintable">
+    <thead>
+        <tr>
+            <th class="title">Organisation</th>
+            <th>Main Contact</th>
+            <th>Phone</th>
+            <th>Application Date</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->initialEnquiries as $form): ?>
+        <tr>
+            <td><?=$form['organisation']?></td>
+            <td><?=$form['main_contact']?></td>
+            <td><?=$form['phone']?></td>
+            <td><?=date('d-m-Y', strtotime($form['application_date']))?></td>
+            <td><a href="/admin/applications/viewform/form_id/<?=$form['form_id']?>" class="button">view</a></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

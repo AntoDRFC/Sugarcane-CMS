@@ -1,0 +1,21 @@
+<div class="home_blogpost" style="margin-top: 20px;">
+    <?php if(count($this->blog_posts)): ?>
+        <?php foreach($this->blog_posts as $post): ?>
+            <a href="/blog/view/<?=$post['post_id']?>"><h2 class="blogtitle" style="margin-bottom: 10px;"><?=$post['post_title']?></h2></a>
+                    <a href="/blog/view/<?=$post['post_id']?>"><img style="border: 3px solid #fff;" width="690px" src="/images/blogimages/<?=$post['post_image']?>" alt="<?=$post['post_title']?>" /></a>
+                    <p style="font-size: 15px;"><?=$post['post_summary']?></p>
+                    <p><a href="/blog/view/<?=$post['post_id']?>" class="readmore">Click here for more...</a></p>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>There are currently no blog posts in this section</p>
+    <?php endif; ?>
+</div>
+
+<?php if(!$this->archive): ?>
+<p><a class="readmore" href="/blog/archive">View blog archive</a></p>
+<?php endif; ?>
+
+
+
+
+                    

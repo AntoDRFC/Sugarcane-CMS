@@ -1,0 +1,12 @@
+<?php if(count($this->newsitems)): ?>
+    <?php foreach($this->newsitems as $newsitem): ?>
+        <div class="newsitem">
+            <p class="newsdate"><?=date('jS F Y', strtotime($newsitem['newsdate']))?></p>
+            <p><span><?=$newsitem['title']?></span>
+            <?=$newsitem['preview']?><br />
+            <a href="/news/view/article/<?=$newsitem['news_id']?>">more</a></p>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No news items found</p>
+<?php endif; ?>

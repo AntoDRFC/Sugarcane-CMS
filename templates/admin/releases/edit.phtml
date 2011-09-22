@@ -1,0 +1,65 @@
+<h1 style="font-size: 18px;"><?=$this->release_id ? 'Edit' : 'Add'?> Release</h1>
+<form method="post" action="/admin/releases/saverelease" enctype="multipart/form-data">
+    <ul class="form">
+        <input type="hidden" name="release_id" value="<?=$this->release_id ? $this->release_id : ''?>" />
+        <li>
+            <label class="desc">Title</label>
+            <input type="text" name="title" value="<?=Globals::ifobjectvarsetor($this->release, 'title', '')?>" />
+        </li>
+        <li>
+            <label class="desc">Artist</label>
+            <select name="artist">
+                <?=Globals::makeOptions($this->artists, Globals::ifobjectvarsetor($this->release, 'artist_id', ''))?>
+            </select>
+        </li>
+        <li>
+            <label class="desc">Release date</label>
+            <input type="text" name="release_date" id="release_date" value="<?=date('d/m/Y', strtotime(Globals::ifobjectvarsetor($this->release, 'release_date', 'today')))?>" />
+        </li>
+        <li>
+            <label class="desc">Release type</label>
+            <?php $options = array('' => '- select -',
+                                   'Single' => 'Single',
+                                   'Album' => 'Album',
+                                   'EP' => 'EP'); ?>
+            <select name="type">
+                <?=Globals::makeOptions($options, Globals::ifobjectvarsetor($this->release, 'type', ''))?>
+            </select>
+        </li>
+        <li>
+            <label class="desc">Enable download all tracks</label>
+            <?php $download_all = Globals::ifobjectvarsetor($this->release, 'download_all', 'No'); ?>
+            <input type="checkbox" name="download_all" value="Yes" <?=$download_all == 'Yes' ? 'checked="checked"' : ''?> />
+        </li>
+        <li>
+            <label class="desc">All tracks price <small>(above checkbox must be ticked to enable)</small></label>
+            £<input type="text" name="full_price" value="<?=Globals::ifobjectvarsetor($this->release, 'full_price', '')?>" size="3" />
+        </li>
+        <li>
+            <label class="desc">All tracks zip file<small>(above checkbox must be ticked to enable)</small></label>
+            <?php if(Globals::ifobjectvarsetor($this->release, 'release_file', '')) { ?>
+                <p><strong>Current file:</strong> <?=Globals::ifobjectvarsetor($this->release, 'release_file', '')?></p>
+            <?php } ?>
+            <input type="file" name="release_file" />
+        </li>
+        <li>
+            <label class="desc">Artwork</label>
+            <?php if(Globals::ifobjectvarsetor($this->release, 'artwork', '')) { ?>
+            <img src="/images/releases/<?=Globals::ifobjectvarsetor($this->release, 'artwork', '')?>" alt="<?=Globals::ifobjectvarsetor($this->release, 'title', '')?>" class="currentimage" />
+            <?php } ?>
+            <input type="file" name="image" id="image" />
+        </li>
+        <li>
+            <label class="desc">iTunes URL</label>
+            <input type="text" name="itunes" value="<?=Globals::ifobjectvarsetor($this->release, 'itunes', '')?>" />
+        </li>
+        <li>
+            <label class="desc">Featured</label>
+            <?php $featured = Globals::ifobjectvarsetor($this->release, 'featured', 'N'); ?>
+            <label><input type="radio" name="featured" value="Y" <?=$featured == 'Y' ? 'checked="checked"' : ''?> /> Yes</label> <label><input type="radio" name="featured" value="N" <?=$featured == 'N' ? 'checked="checked"' : ''?> /> No</label>
+        </li>
+        <li id="submitarea">
+            <input type="submit" value="Save" />
+        </li>
+    </ul>
+</form>

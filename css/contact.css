@@ -1,0 +1,32 @@
+#errors {
+    background-color: #ffefef;
+    border: 1px solid #e84141;
+    color: #de0000;
+    margin-bottom: 19px;
+}
+#errors p {
+    padding: 0 20px;
+}
+
+#contact_form {
+    width: 326px;
+}
+
+.textfield {
+    width: 195px;
+    border: 1px solid #3f8795;
+}
+#enquiry {
+    width: 320px;
+    height: 100px;
+}
+.form_base {
+    text-align: right;
+}
+.form_base input {
+    background: #3f8795;
+    border: none;
+    margin: 0;
+    color: #ffffff;
+    padding: 6px 8px;
+}

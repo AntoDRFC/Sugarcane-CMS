@@ -1,0 +1,91 @@
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+    <?php foreach($this->tracks as $track): ?>
+    	$("#play_<?=$track['track_id']?>").jPlayer({
+    		ready: function () {
+    			$(this).jPlayer("setMedia", {
+    				mp3: "/mp3previews/<?=$this->release['release_id']?>/<?=$track['preview_file']?>"
+    			});
+    		},
+    		swfPath: "/js",
+    		supplied: "mp3",
+    		cssSelectorAncestor: "#jp_interface_<?=$track['track_id']?>"
+    	})
+    	.bind($.jPlayer.event.play, function() { // Using a jPlayer event to avoid both jPlayers playing together.
+    			$(this).jPlayer("pauseOthers");
+    	});
+    <?php endforeach; ?>
+});
+//]]>
+</script>
+<h2><?=$this->release['artist']?> - <?=$this->release['title']?></h2>
+<img src="/images/releases/<?=$this->release['artwork']?>" width="250" height="250" alt="<?=$this->release['title']?>" />
+<p><strong>Release date:</strong> <?=Globals::dateMysqlToUk($this->release['release_date']);?></p>
+<?php if($this->release['itunes']): ?>
+<p><a href="#itunes_link" id="itunes_link"><img src="/images/download_Itunes_button.jpg" alt="Download on iTunes" width="84" height="34" /></a></p>
+<div id="itunes_exit" style="display: none;">
+    <h2>Exit to itunes</h2>
+    <p>Because we are so kind, warm and generous we'd like to send you free music and promotions from time to time. Before you go to the itunes store, would you like to become our best friend? Introduce yourself here if so...</p>
+    <form id="newsletter_signup">
+        <input name="p" type="hidden" id="p" value="9">
+        <input type="hidden" name="nlbox[1]" value="4">
+        <input type="hidden" name="funcml" value="add">
+        <input type="hidden" name="destinationUrl" value="<?=$this->release['itunes']?>" id="destinationUrl">
+    	<div class="form_field"><label for="email" class="form_desc">Email: <span class="required">(required)</span></label><input class="form_content textfield" type="text" name="email" id="input_email" /></div>
+    	<div class="form_field"><label for="name" class="form_desc">Name: <span class="required">(required)</span></label><input class="form_content textfield" type="text" name="name" id="input_name" /></div>
+    	<div class="form_base">
+    	   <input type="submit" name="Submit" value="Subscribe and continue iTunes" class="submitbutton" />
+        </div>
+    </form>
+    <p><a href="<?=$this->release['itunes']?>" target="_blank" id="nothanks">No thanks, just send me to iTunes</a></p>
+</div>
+<?php endif; ?>
+<h3>Track List</h3>
+<?php if($this->tracks): ?>
+    <table cellspacing="0" id="releasetable">
+        <th>&nbsp;</th>
+        <th>Name</th>
+        <th>Listen</th>
+        <th>Price</th>
+        <?php foreach($this->tracks as $track): ?>
+        <tr class="release">
+            <td><?=$track['track_number']?></td>
+            <td><?=ucfirst($track['name'])?></td>
+            <td>
+                <?php if($track['preview_file']): ?>
+                    <div id="play_<?=$track['track_id']?>"></div>
+                    <div id="jp_interface_<?=$track['track_id']?>" class="jp-interface">
+                    	<ul class="jp-controls">
+                    		<li><a href="#" class="jp-play" tabindex="1"><img src="/images/play-button.png" alt="Play preview" width="20" height="20" /></a></li>
+                    		<li><a href="#" class="jp-pause" tabindex="1"><img src="/images/pause-button.png" alt="Pause preview" width="20" height="20" /></a></li>
+                    	</ul>
+                    </div>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if($track['price'] > 0): ?>
+                    <a href="/cart/addtocart/track/<?=$track['track_id']?>" class="pricepill">&pound;<?=$track['price']?> Buy</a>
+                <?php else: ?>
+                    <a href="/download/free/track/<?=$track['track_id']?>" class="pricepill">Free Download</a>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <?php if(!empty($track['texttobuy_code'])): ?>
+        <tr>
+            <td colspan="4">
+                <p style="margin: 0px 0px 0px 26px;">OR to Buy Via Text Pay (£1) Text <strong><?=$track['texttobuy_code']?></strong> to 60444</p>
+            </td>
+        </tr>
+        <?php endif; ?>
+        <?php endforeach;?>
+        </table>
+    
+    <?php if($this->release['download_all'] == 'Yes'): ?>
+        <p><a href="/cart/addtocart/release/<?=$this->release['release_id']?>" class="pricepill">&pound;<?=$this->release['full_price']?> Buy <?=$this->release['type']?></a></p>
+    <?php endif; ?>
+<?php else: ?>
+<p>No tracks are available for this release.</p>
+<?php endif; ?>
+
+<p id="backtoreleases"><a href="/releases" class="button">Back to releases</a></p>

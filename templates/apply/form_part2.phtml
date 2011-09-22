@@ -1,0 +1,191 @@
+<form method="post" action="/apply/saveparttwo/">
+    <div class="form_field">
+        <label class="form_desc" for="organisation">Registered Name of Applicant Organisation:</label>
+        <input type="text" value="<?=$this->initialApplicationForm['organisation']?>" disabled="disabled" name="organisation" class="form_content textfield disabled">
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="address">Address:</label>
+        <textarea name="address" class="form_content textarea disabled" disabled="disabled"><?=$this->initialApplicationForm['address']?></textarea>
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="postcode">Postcode:</label>
+        <input type="text" value="<?=$this->initialApplicationForm['postcode']?>" disabled="disabled" name="postcode" class="form_content textfield disabled">
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="main_contact">Name of main contact:</label>
+        <input type="text" value="<?=$this->initialApplicationForm['main_contact']?>" disabled="disabled" name="main_contact" class="form_content textfield disabled">
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="phone">Telephone:</label>
+        <input type="text" value="<?=$this->initialApplicationForm['phone']?>" disabled="disabled" name="phone" class="form_content textfield disabled">
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="mobile">Mobile Telephone:</label>
+        <input type="text" value="<?=$this->initialApplicationForm['mobile']?>" disabled="disabled" name="mobile" class="form_content textfield disabled">
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="email">Email:</label>
+        <input type="text" value="<?=$this->initialApplicationForm['email']?>" disabled="disabled" name="email" class="form_content textfield disabled">
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="enterprise_idea">Please give a brief description of your enterprise activity/idea:</label>
+        <textarea name="enterprise_idea" class="form_content textarea disabled" disabled="disabled"><?=$this->initialApplicationForm['enterprise_idea']?></textarea>
+    </div>
+    <div class="form_field">
+        <p><strong>Please provide a breakdown of what the Key Fund finance will be used for in the table below</strong></p>
+        <table cellspacing="0">
+            <tr>
+                <th>Purpose</th>
+                <th>Amount</th>
+            </tr>
+            <?php for($i=1; $i<=4; $i++): ?>
+            <tr>
+                <td><input type="text" value="" name="purpose_<?=$i?>" class="form_content textfield"></td>
+                <td><input type="text" value="" name="amount_<?=$i?>" class="form_content textfield funding_textfield"></td>
+            </tr>
+            <?php endfor; ?>
+            <tr>
+                <td style="text-align: right;"><strong>Total</strong></td>
+                <td><input type="text" value="" name="total_amount" class="form_content textfield funding_textfield"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="form_field">
+        <p><strong>Please list any other funding (applied for or secured) which will Contribute towards the proposal</strong></p>
+        <table cellspacing="0">
+            <tr>
+                <th>Purpose</th>
+                <th>Amount</th>
+                <th>Funder</th>
+                <th>Status</th>
+            </tr>
+            <?php for($i=1; $i<=3; $i++): ?>
+            <tr>
+                <td><input type="text" value="" name="other_purpose_<?=$i?>" class="form_content textfield"></td>
+                <td><input type="text" value="" name="other_amount_<?=$i?>" class="form_content textfield funding_textfield"></td>
+                <td><input type="text" value="" name="other_funder_<?=$i?>" class="form_content textfield funding_textfield"></td>
+                <td><input type="text" value="" name="other_status_<?=$i?>" class="form_content textfield funding_textfield"></td>
+            </tr>
+            <?php endfor; ?>
+        </table>
+    </div>
+    <div class="form_field">
+        <p><strong>Please list details of any existing loan finance (provide separate schedule if insufficient space below)</strong></p>
+        <table cellspacing="0">
+            <tr>
+                <th>Lender (Name)</th>
+                <th style="width: 62px">Original<br/>amount borrowed</th>
+                <th style="width: 69px">Current amount outstanding</th>
+                <th style="width: 62px">Expected maturity date</th>
+            </tr>
+            <?php for($i=1; $i<=2; $i++): ?>
+            <tr>
+                <td><input type="text" value="" name="lender_<?=$i?>" class="form_content textfield"></td>
+                <td><input type="text" value="" name="borrowed_<?=$i?>" class="form_content textfield funding_textfield"></td>
+                <td><input type="text" value="" name="outstanding_<?=$i?>" class="form_content textfield" style="width: 57px"></td>
+                <td><input type="text" value="" name="maturity_date_<?=$i?>" class="form_content textfield funding_textfield"></td>
+            </tr>
+            <?php endfor; ?>
+        </table>
+    </div>
+    <div class="form_field">
+        <label class="inline_desc">Are any loan repayments in arrears?</label>
+        <input type="radio" name="arrears" value="Yes" /> Yes <input type="radio" name="arrears" value="No" /> No
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="arrear_details">if yes please advise</label>
+        <textarea name="arrear_details" class="form_content textarea"></textarea>
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="demand">How do you know there is a demand for your service or product?</label>
+        <textarea name="demand" class="form_content textarea"></textarea>
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="main_customers">Who are your main customers?</label>
+        <textarea name="main_customers" class="form_content textarea"></textarea>
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="competitors">Who are your competitors and what makes your service or product different?</label>
+        <textarea name="competitors" class="form_content textarea"></textarea>
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="market_service">How will you market your service or product to your customers?</label>
+        <textarea name="market_service" class="form_content textarea"></textarea>
+    </div>
+    <div class="form_field">
+        <p><strong>Please provide details of who the key managers, employees and/or volunteers and their skills/experience below</strong></p>
+        <table cellspacing="0">
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Skills / Experience</th>
+            </tr>
+            <?php for($i=1; $i<=3; $i++): ?>
+            <tr>
+                <td><input type="text" value="<?=$this->initialApplicationForm['name_' . $i]?>" name="name_<?=$i?>" disabled="disabled" class="form_content textfield people_textfield disabled"></td>
+                <td><input type="text" value="" name="position_<?=$i?>" class="form_content textfield people_textfield"></td>
+                <td><input type="text" value="<?=$this->initialApplicationForm['skills_' . $i]?>" name="skills_<?=$i?>" disabled="disabled" class="form_content textfield people_textfield disabled"></td>
+            </tr>
+            <?php endfor; ?>
+        </table>
+    </div>
+    <div class="form_field">
+        <p><strong>Please provide details of who the key board members and their skills / experience in the table below</strong></p>
+        <table cellspacing="0">
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Skills / Experience</th>
+            </tr>
+            <?php for($i=1; $i<=4; $i++): ?>
+            <tr>
+                <td><input type="text" value="" name="board_name_<?=$i?>" class="form_content textfield people_textfield"></td>
+                <td><input type="text" value="" name="board_position_<?=$i?>" class="form_content textfield people_textfield"></td>
+                <td><input type="text" value="" name="board_skills_<?=$i?>" class="form_content textfield people_textfield"></td>
+            </tr>
+            <?php endfor; ?>
+        </table>
+    </div>
+    <div class="form_field">
+        <label class="form_desc" for="best_practice">Who has the organisation worked with for advice and best practice?</label>
+        <textarea name="best_practice" class="form_content textarea"></textarea>
+    </div>
+    <div class="form_field">
+        <p><strong>Please list below the number of outputs related to this proposal available for Key Fund<br />
+        Please note that you are confirming that these outputs have not and will not be used as part of any application to other funders</strong></p>
+        <table cellspacing="0">
+            <tr>
+                <th>New Business Start</th>
+                <th>Research project</th>
+                <th>Jobs Created (FTE)</th>
+                <th>Jobs Safeguarded (FTE)</th>
+            </tr>
+            <tr>
+                <td><input type="text" value="" name="board_name" class="form_content textfield people_textfield"></td>
+                <td><input type="text" value="" name="board_position" class="form_content textfield people_textfield"></td>
+                <td><input type="text" value="" name="board_skills" class="form_content textfield people_textfield"></td>
+                <td><input type="text" value="" name="board_skills" class="form_content textfield people_textfield"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="form_field">
+        <table cellspacing="0">
+            <tr>
+                <td><label class="inline_desc">Please advise what percentage of the organisation beneficiaries are women</label></td>
+                <td><input type="text" value="" name="women_beneficiaries" class="form_content textfield funding_textfield"> %</td>
+            </tr>
+            <tr>
+                <td><label class="inline_desc">Please advise what percentage of the organisation beneficiaries are from Black or ethnic minorities</label></td>
+                <td><input type="text" value="" name="minorities" class="form_content textfield funding_textfield"> %</td>
+            </tr>
+        </table>
+    </div>
+    <div class="form_field">
+        <label class="inline_desc">Are you registered for VAT? If so, please provide your registration number</label>
+        <input type="text" value="" name="vat_number" class="form_content textfield people_textfield">
+    </div>
+    <div class="submitarea">
+        <input type="submit" value="Submit Application" />
+    </div>
+</form>
+

@@ -1,0 +1,88 @@
+h1 {
+    width: 440px;
+}
+
+#random_album {
+    border: 2px solid #ffffff;
+    margin-top: -220px;
+    margin-bottom: 16px;
+}
+
+#maincontent p {
+    line-height: 22px;
+}
+
+#latest_releases_wrapper {
+    clear: both;
+    height: 297px;
+    background: url(/images/latestreleases_bg.jpg) top left no-repeat;
+    margin-bottom: 18px;
+}
+
+#latest_releases {
+    padding: 10px 48px;
+}
+#latest_releases h2 {
+    margin-bottom: 12px;
+}
+.latest_release {
+    float: left;
+    width: 146px;
+    margin-left: 25px;
+    color: #c6e8ee;
+}
+.first {
+    margin-left: 0;
+}
+.latest_release a {
+    color: #c6e8ee;
+}
+.latest_release a:hover {
+    text-decoration: underline;
+}
+.download_tracks a:hover {
+    color: #3F8795;
+    text-decoration: none;
+}
+.release_info {
+    margin-top: 6px;
+    line-height: 20px;
+}
+
+h2 {
+    color: #3e8795;
+    font-size: 22px;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+#latest_news {
+    margin-bottom: 10px;
+}
+#latest_news h2 {
+    padding-left: 48px;
+    margin-bottom: 6px;
+}
+
+#news_items {
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    padding: 10px 48px;
+    font-size: 15px;
+}
+#news_items ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#news_items ul li {
+    float: left;
+    width: 390px;
+    margin-right: 25px;
+    line-height: 20px;
+}
+#news_items ul li span {
+    display: block;
+    color: #3f8795;
+}

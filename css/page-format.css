@@ -1,0 +1,493 @@
+/* CSS */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body {
+	background-color: #dbd3bb;
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body, p, td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #40423d;
+	line-height: 1.6em;
+    margin-bottom: 10px;
+}
+
+#mainContainer {
+	width: 980px;
+	margin: 0px auto;
+	padding: 0px;
+}
+
+/* HEADER */
+
+#header {
+	width: 980px;
+	height: 126px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#headerLeft {
+    position: relative;
+    margin: 0px 0px 0px -550px;
+    float: left;
+    width: 224px;
+    height: 77px;
+    padding: 49px 14px 0px 565px;
+    background-color: #b19f79;
+}
+
+#headerRight {
+    position: relative;
+    float: left;
+    margin: 0px;
+    width: 727px;
+    height: 125px;
+}
+
+#headerContact {
+    position: relative;
+    width: 713px;
+    margin: 0px;
+    height: 79px;
+    padding: 14px 14px 0px 0px;
+    text-align: right;
+}
+
+/* CONTENT */
+
+#contentContainer {
+	position: relative;
+	width: 980px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#leftColumn {
+    clear: both;
+    float: left;
+    width: 225px;
+    padding: 0px 14px 0px 564px;
+    margin: 0px 0px 0px -550px;
+    background-color: #b19f79;
+}
+
+#leftColumnCallouts {
+    position: relative;
+    width: 185px;
+    padding: 0px 20px 0px 20px;
+}
+
+#twitterFeedBlog {
+    position:relative;
+    float: left;
+    width: 205px;
+    margin: 10px 7px 0px 0px;
+    padding: 0px 10px 5px 10px;
+    background: url("../images/TWITTER_FEED_TOP_BLOG.png") no-repeat top center;
+}
+
+#twitterFeedBlog img {
+    margin-right: 5px;
+    border: 1px solid #fff;
+}
+
+#twitterFeedBlog img#twitterLogo {
+    border: 0px solid #fff;
+}
+
+#twitterFeedBlog li {
+    margin-bottom: 10px;
+    list-style-type: none;
+    color: #545042;
+}
+
+#leftColumnTextArea p {
+    color: #fff;
+}
+
+#clientsBySector {
+    position: relative;
+    width: 215px;   
+    background: url("../images/SOME_CLIENTS_BG.gif") no-repeat top center;
+    height: 250px;
+    padding: 0px 10px 0px 0px;
+}
+
+#clientsBySector h2 {
+    text-align: left;
+    width:215px;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+#rightColumn {
+    float: left;
+    width: 699px;
+    padding: 0px 14px 0px 14px;
+    margin: 0px;
+}
+
+#rightColumnHeader {
+    position: relative;
+    width: 699px;
+    padding: 0px;
+    background: url("../images/WEB_IMAGE_BG.gif") no-repeat bottom center;
+}
+
+#rightColumnHeaderText {
+    position: relative;
+    width: 569px;
+    padding: 10px 100px 10px 30px;
+    margin: 0px;
+}
+
+#textArea {
+    width: 699px;
+    padding: 0px;
+    margin: 10px 0px 10px 0px;
+}
+
+#rightColumnHeaderText h2 { color: #b19f79; margin-bottom: 8px; }
+#rightColumnHeaderText p { color: #fff; }
+
+#rightColumnImagery {
+    width: 699px;
+    padding: 0px;
+    margin: 0px;
+}
+
+#rightColumnMarketing {
+    position: relative;
+    float: left;
+    width: 227px;
+    margin: 0px 9px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    height: 330px;
+}
+
+#rightColumnMarketingImage {
+    background: #fff url("../images/HEADER_MARKETING_SMALL.jpg") no-repeat top center;
+    width: 227px;
+    height: 142px;
+}
+
+#rightColumnMarketingImage:hover {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #fff url("../images/HEADER_MARKETING_LARGE.jpg") no-repeat top center;
+    width: 699px;
+    height: 250px;
+    z-index: 1;
+}
+
+#rightColumnMarketingLogo {
+    position: relative;
+    margin: 0px 0px 10px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+#rightColumnMarketing h6 {
+    position: absolute;
+    top: 195px;
+    left: 0px;
+}
+
+#rightColumnMarketing p {
+    position: absolute;
+    top: 215px;
+    left: 0px;
+}
+
+#rightColumnDesign {
+    position: relative;
+    float: left;
+    width: 227px;
+    margin: 0px 9px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    height: 330px;
+}
+
+#rightColumnDesignImage {
+    background: #fff url("../images/HEADER_DESIGN_SMALL.jpg") no-repeat top center;
+    width: 227px;
+    height: 142px;
+}
+
+#rightColumnDesignImage:hover {
+    position: absolute;
+    top: 0px;
+    left: -236px;
+    background: #fff url("../images/HEADER_DESIGN_LARGE.jpg") no-repeat top center;
+    width: 699px;
+    height: 250px;
+    z-index: 1;
+}
+
+#rightColumnDesignLogo {
+    position: relative;
+    margin: 0px 0px 10px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+#rightColumnDesign h6 {
+    position: absolute;
+    top: 195px;
+    left: 0px;
+}
+
+#rightColumnDesign p {
+    position: absolute;
+    top: 215px;
+    left: 0px;
+}
+
+#rightColumnWeb {
+    position: relative;
+    float: left;
+    width: 227px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    height: 330px;
+}
+
+#rightColumnWebImage {
+    background: url("../images/HEADER_WEB_SMALL.jpg") no-repeat top center;
+    width: 227px;
+    height: 142px;
+}
+
+#rightColumnWebImage:hover {
+    position: absolute;
+    top: 0px;
+    left: -472px;
+    background: url("../images/HEADER_WEB_LARGE.jpg") no-repeat top center;
+    width: 699px;
+    height: 250px;
+    z-index: 1;
+}
+
+#rightColumnWebLogo {
+    position: relative;
+    margin: 0px 0px 10px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+#rightColumnWeb h6 {
+    position: absolute;
+    top: 195px;
+    left: 0px;
+}
+
+#rightColumnWeb p {
+    position: absolute;
+    top: 215px;
+    left: 0px;
+}
+
+#twitterFeed {
+    position:relative;
+    float: left;
+    width: 253px;
+    margin: 0px 7px 0px 0px;
+    padding: 0px 10px 5px 10px;
+    background: #545042 url("../images/TWITTER_FEED_TOP.gif") no-repeat top center;
+}
+
+#twitterFeed img {
+    margin-right: 5px;
+    border: 1px solid #fff;
+}
+
+#twitterFeed img#twitterLogo {
+    border: 0px solid #fff;
+}
+
+#twitterFeed li {
+    margin-bottom: 10px;
+    list-style-type: none;
+    color: #b19f79;
+}
+
+#twitterFeed li a {
+    color: #fff;
+}
+
+#homeCallouts {
+    position:relative;
+    float: left;
+    width: 182px;
+    margin: 0px 8px 0px 0px;
+    padding: 0px;
+}
+
+#calloutBlog {
+    position: relative;
+    float: left;
+    width: 88px;
+    height: 74px;
+    display: block;
+    margin: 0px 5px 5px 0px;
+    padding: 0px 0px 0px 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat 0px 0px;
+}
+
+#calloutBlog:hover {
+    position: relative;
+    margin: 0px 5px 5px 0px;
+    padding: 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat 0px -222px;
+}
+
+#calloutDownloads {
+    position: relative;
+    float: left;
+    width: 88px;
+    height: 74px;
+    display: block;
+    margin: 0px 0px 5px 0px;
+    padding: 0px 0px 0px 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat -88px 0px;
+}
+
+#calloutDownloads:hover {
+    position: relative;
+    margin: 0px 0px 5px 0px;
+    padding: 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat -88px -222px;
+}
+
+#calloutLocation {
+    position: relative;
+    float: left;
+    width: 88px;
+    height: 74px;
+    display: block;
+    margin: 0px 5px 5px 0px;
+    padding: 0px 0px 0px 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat 0px -74px;
+}
+
+#calloutLocation:hover {
+    position: relative;
+    margin: 0px 5px 5px 0px;
+    padding: 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat 0px -296px;
+}
+
+#calloutSofa {
+    position: relative;
+    float: left;
+    width: 88px;
+    height: 74px;
+    display: block;
+    margin: 0px 0px 5px 0px;
+    padding: 0px 0px 0px 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat -88px -74px;
+}
+
+#calloutSofa:hover {
+    position: relative;
+    margin: 0px 0px 5px 0px;
+    padding: 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat -88px -296px;
+}
+
+#calloutTwitter {
+    position: relative;
+    float: left;
+    width: 88px;
+    height: 74px;
+    display: block;
+    margin: 0px 5px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat 0px -148px;
+}
+
+#calloutTwitter:hover {
+    position: relative;
+    margin: 0px 5px 0px 0px;
+    padding: 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat 0px -370px;
+}
+
+#calloutContact {
+    position: relative;
+    float: left;
+    width: 88px;
+    height: 74px;
+    display: block;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat -88px -148px;
+}
+
+#calloutContact:hover {
+    position: relative;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    background: url(../images/CALLOUTS_HOME.png) no-repeat -88px -370px;
+}
+
+#homeTraining {
+    position:relative;
+    float: left;
+    width: 209px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 10px 0px 10px;
+    background: #b19f79 url("../images/TRAINING_TOP.gif") no-repeat top center;
+}
+
+
+/* FOOTER */
+
+#footer {
+	clear: both;
+    width: 965px;
+	padding: 23px 0px 0px 15px;
+	margin: 0px;
+    background: url("../images/FOOTER_BG.gif") no-repeat top center;
+}
+
+/*CONTACT FORM STYLES*/
+
+.form_desc {
+	float: left;
+	width: 80px;
+	line-height: 15px;
+	padding-bottom: 6px;
+	margin-left: 0px;
+	font-family: Arial, Helvetica, sans-serif; font-size: 12px;}
+.form_field {
+	padding-bottom: 6px;
+	clear: both;
+}
+.form_content {
+	width: 170px;
+	border: 1px solid #999;
+}
+.form_base {
+	padding-left: 80px;
+	padding-top: 10px;
+	padding-bottom:3px;
+	font-family: Verdana, Geneva, sans-serif; font-size: 10px; line-height: 1.2em
+}
+
+.form_base input {
+	margin-top: 4px;
+	padding-top: 0px;
+}

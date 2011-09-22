@@ -1,0 +1,29 @@
+<h1>Blog Posts</h1>
+
+<!--
+<p>
+    <strong>Switch Blog</strong><br />
+    <select name="blog">
+        <option value="Marketing">Marketing</option>
+    </select>
+</p>
+-->
+
+<?php if(count($this->posts)): ?>
+<table cellspacing="0" id="blogpostslist">
+    <?php foreach($this->posts as $post): ?>
+        <tr>
+            <td class="blogpostslisttitle"><?=$post['post_title']?></td>
+            <?php if($post['published'] == 'N'): ?>
+            <td><a href="/blogadmin/publish/post/<?=$post['post_id']?>">Publish post</a></td>
+            <?php else: ?>
+            <td><a href="/blogadmin/hide/post/<?=$post['post_id']?>">Hide post</a></td>
+            <?php endif; ?>
+            <td><a href="/blogadmin/editpost/post/<?=$post['post_id']?>">Edit post</a></td>
+            <td><a href="/blogadmin/deletepost/post/<?=$post['post_id']?>" class="deletepost">Delete post</a></td>
+            <td><a href="/blogadmin/comments/post/<?=$post['post_id']?>">View comments</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<?php endif; ?>
+<p><a href="/blogadmin/editpost/">Add new post</a></p>

@@ -1,0 +1,17 @@
+<h1>Edit Region</h1>
+
+<h2>Title: <?=ucfirst(Globals::ifobjectvarsetor($this->region, 'slug', ''))?></h2>
+
+<form method="post" action="/admin/editableregions/savecontent/">
+    <input type="hidden" name="content_id" value="<?=($this->regionId) ? $this->regionId : ''?>" />
+    <ul class="form">
+        <li>
+            <span class="desc">Content</span>
+            <textarea name="content" id="full_text"><?=Globals::ifobjectvarsetor($this->region, 'content', '')?></textarea>
+        </li>
+        <li class="submitarea">
+            <input type="submit" name="submitbutton" value="Save Changes" id="savepagebutton" />
+            <button type="button" id="cancelchanges">Cancel</button>
+        </li>
+    </ul>
+</form>

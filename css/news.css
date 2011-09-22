@@ -1,0 +1,20 @@
+.newsitem {
+   margin-bottom: 18px;
+}
+
+.newsitem p.newsdate {
+    border-bottom: 1px dotted #ffffff;
+    margin: 10px 0 10px 0;
+}
+.newsitem p {
+    margin: 0;
+}
+
+h2 span {
+    display: block;
+    font-size: 14px;
+}
+
+#backtonews {
+    margin-top: 40px;
+}

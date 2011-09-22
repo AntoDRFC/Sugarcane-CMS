@@ -1,0 +1,37 @@
+<h1 style="font-size: 18px;"><?=$this->newsitem_id ? 'Edit' : 'Add'?> News Item</h1>
+<form method="post" action="/admin/news/savenewsitem" enctype="multipart/form-data">
+    <ul class="form">
+        <input type="hidden" name="news_id" value="<?=$this->newsitem_id ? $this->newsitem_id : ''?>" />
+        <li>
+            <label class="desc">Title</label>
+            <input type="text" name="news_title" value="<?=Globals::ifobjectvarsetor($this->newsitem, 'title', '')?>" />
+        </li>
+        <li>
+            <label class="desc">News date</label>
+            <input type="text" name="news_date" id="news_date" value="<?=date('d/m/Y', strtotime(Globals::ifobjectvarsetor($this->newsitem, 'newsdate', 'today')))?>" />
+        </li>
+        <li>
+            <label class="desc">News image</label>
+            <?php if(Globals::ifobjectvarsetor($this->newsitem, 'news_image', '')) { ?>
+            <img src="<?=Globals::ifobjectvarsetor($this->newsitem, 'news_image', '')?>" alt="<?=Globals::ifobjectvarsetor($this->newsitem, 'title', '')?>" class="currentimage" />
+            <?php } ?>
+            <input type="file" name="image" id="image" />
+        </li>
+        <li>
+            <label class="desc">Preview text</label>
+            <textarea name="preview_text" class="small_textarea"><?=Globals::ifobjectvarsetor($this->newsitem, 'preview', '')?></textarea>
+        </li>
+        <li>
+            <label class="desc">News text</label>
+            <textarea name="news_text" id="news_text"><?=Globals::ifobjectvarsetor($this->newsitem, 'content', '')?></textarea>
+        </li>
+        <li>
+            <label class="desc">Published</label>
+            <?php $published = Globals::ifobjectvarsetor($this->newsitem, 'published', '0'); ?>
+            <label><input type="radio" name="published" value="1" <?=$published == '1' ? 'checked="checked"' : ''?> /> Yes</label> <label><input type="radio" name="published" value="0" <?=$published == '0' ? 'checked="checked"' : ''?> /> No</label>
+        </li>
+        <li id="submitarea">
+            <input type="submit" value="Save" />
+        </li>
+    </ul>
+</form>

@@ -1,0 +1,11 @@
+<?php if($this->releases): ?>
+    <?php foreach($this->releases as $release): ?>
+        <div class="release">
+            <h2><?=$release['title']?><span><?=$release['name']?></span></h2>
+            <img style="margin-top: -8px;" src="/images/releases/<?=$release['artwork']?>" width="142" height="142" alt="<?=$release['title']?>" />
+            <p style="margin-top: 5px; margin-bottom: 40px;" class="view_tracks"><a href="/releases/view/release/<?=$release['release_id']?>"><img src="/images/LISTEN_BUY.gif" alt="listen and buy" /></a></p>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No artists found</p>
+<?php endif; ?>

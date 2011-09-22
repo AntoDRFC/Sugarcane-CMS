@@ -1,0 +1,44 @@
+<h1 style="font-size: 18px;"><?=$this->track_id ? 'Edit' : 'Add'?> Track</h1>
+<form method="post" action="/admin/tracks/savetrack" enctype="multipart/form-data">
+    <ul class="form">
+        <input type="hidden" name="track_id" value="<?=$this->track_id ? $this->track_id : ''?>" />
+        <input type="hidden" name="release_id" value="<?=$this->release_id ? $this->release_id : ''?>" />
+        <li>
+            <label class="desc">Track name</label>
+            <input type="text" name="name" value="<?=Globals::ifobjectvarsetor($this->track, 'name', '')?>" />
+        </li>
+        <li>
+            <label class="desc">Track number</label>
+            <input type="text" name="track_number" value="<?=Globals::ifobjectvarsetor($this->track, 'track_number', '')?>" size="3" />
+        </li>
+        <li>
+            <label class="desc">Price</label>
+            &pound;<input type="text" name="price" value="<?=Globals::ifobjectvarsetor($this->track, 'price', '')?>" size="2" />
+        </li>
+        <li>
+            <label class="desc">MP3 Preview</label>
+            <?php if(Globals::ifobjectvarsetor($this->track, 'preview_file', '')) { ?>
+                <p><?=Globals::ifobjectvarsetor($this->track, 'preview_file', '')?></p>
+            <?php } ?>
+            <input type="file" name="track" id="track" />
+        </li>
+        <li>
+            <label class="desc">Full track</label>
+            <?php if(Globals::ifobjectvarsetor($this->track, 'track_file', '')) { ?>
+                <p><?=Globals::ifobjectvarsetor($this->track, 'track_file', '')?></p>
+            <?php } ?>
+            <input type="file" name="full_track" id="full_track" />
+        </li>
+        <li>
+            <label class="desc">Text to buy code</label>
+            <input type="text" name="texttobuy_code" value="<?=Globals::ifobjectvarsetor($this->track, 'texttobuy_code', '')?>" />
+        </li>
+        <li>
+            <label class="desc">ISRC (not viewable publically)</label>
+            <input type="text" name="isrc_code" value="<?=Globals::ifobjectvarsetor($this->track, 'isrc_code', '')?>" />
+        </li>
+        <li id="submitarea">
+            <input type="submit" value="Save" />
+        </li>
+    </ul>
+</form>

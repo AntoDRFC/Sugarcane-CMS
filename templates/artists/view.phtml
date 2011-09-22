@@ -1,0 +1,23 @@
+<h2><?=$this->artist['name']?></h2>
+<img src="/images/artistimages/<?=$this->artist['image']?>" width="250" height="250" alt="<?=$this->artist['name']?>" />
+
+<?php if($this->artist['sec_image']): ?>
+<img src="/images/artistimages/<?=$this->artist['sec_image']?>" width="250" height="250" alt="<?=$this->artist['name']?>" />
+<?php endif; ?>
+
+<?=$this->artist['description']?>
+
+<h3 style="margin-bottom: 10px;">Latest releases</h3>
+<?php if($this->releases): ?>
+    <?php foreach($this->releases as $release): ?>
+    <div class="release">
+        <img style="margin-bottom: 10px;" src="/images/releases/<?=$release['artwork']?>" alt="<?=$release['title']?>" width="146" height="146" />
+        <p class="release_info"><?=$release['title']?><br />
+        <p class="download_tracks"><a href="/releases/view/release/<?=$release['release_id']?>">View Tracks</a></p>
+    </div>
+    <?php endforeach;?>
+<?php else: ?>
+<p>No releases are available for this artist.</p>
+<?php endif; ?>
+
+<p id="backtoartists"><a href="/artists" class="button">Back to artists listing</a></p>

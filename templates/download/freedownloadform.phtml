@@ -1,0 +1,54 @@
+<?php
+$firstname = isset($this->formdata['data']['firstname']) ? $this->formdata['data']['firstname'] : '';
+$lastname  = isset($this->formdata['data']['lastname']) ? $this->formdata['data']['lastname'] : '';
+$address   = isset($this->formdata['data']['address']) ? $this->formdata['data']['address'] : '';
+$postcode  = isset($this->formdata['data']['postcode']) ? $this->formdata['data']['postcode'] : '';
+$country   = isset($this->formdata['data']['country']) ? $this->formdata['data']['country'] : '';
+$email     = isset($this->formdata['data']['email']) ? $this->formdata['data']['email'] : '';
+?>
+
+<h3>Selected Download</h3>
+<div id="freetrack">
+    <p><?=$this->track['artist']?> - <?=$this->track['name']?></p>
+</div>
+
+<?php if(count($this->formdata['errors'])): ?>
+    <div id="errors">
+        <p><strong><?=count($this->formdata['errors'])?> error<?php if(count($this->formdata['errors']) > 1): ?>s were<?php else: ?> was<?php endif; ?>  encountered in your contact</strong><br />Please correct these errors and submit the form again.</p>
+        <ul>
+            <?php foreach($this->formdata['errors'] as $error): ?>
+                <li><?=$error?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+<form method="post" action="/download/savedetails/" id="contact_form">
+    <input type="hidden" name="track_id" value="<?=$this->track['track_id']?>" />
+	<div class="form_field">
+	   <label for="firstname" class="form_desc">First Name: <span class="required">(required)</span></label>
+	   <input class="form_content textfield" type="text" name="firstname" value="<?=$firstname?>" />
+    </div>
+	<div class="form_field">
+	   <label for="lastname" class="form_desc">Surname: <span class="required">(required)</span></label>
+	   <input class="form_content textfield" type="text" name="lastname" value="<?=$lastname?>" />
+    </div>
+	<div class="form_field">
+	   <label for="address" class="form_desc">Address: <span class="required">(required)</span></label>
+	   <textarea class="form_content" name="address" style="height: 50px; width: 320px;"><?=$address?></textarea>
+    </div>
+	<div class="form_field">
+	   <label for="postcode" class="form_desc">Postcode: <span class="required">(required)</span></label>
+	   <input class="form_content textfield" type="text" name="postcode" value="<?=$postcode?>" />
+    </div>
+	<div class="form_field">
+	   <label for="country" class="form_desc">Country: (if not in the UK)</label>
+	   <input class="form_content textfield" type="text" name="country" value="<?=$country?>" />
+    </div>
+	<div class="form_field">
+	   <label for="email" class="form_desc">Email: <span class="required">(required)</span> (your download code will be sent here)</label>
+	   <input class="form_content textfield" type="text" name="email" value="<?=$email?>" />
+    </div>
+	<div class="form_base" style="text-align: left;">
+	   <input type="submit" name="submit_button" value="Submit"/>
+    </div>
+</form>

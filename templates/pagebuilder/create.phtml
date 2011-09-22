@@ -1,0 +1,36 @@
+<h1><?=$this->page_id ? 'Edit' : 'Create'?> Page</h1>
+
+<form method="post" action="/pagebuilder/savepage/" id="createpageform">
+    <input type="hidden" name="page_id" value="<?=($this->page_id) ? $this->page_id : ''?>" />
+    <input type="hidden" name="parent" value="<?=$this->parent?>" />
+    <ul class="form">
+        <li>
+            <span class="desc">Page Title</span>
+            <input type="text" name="page_title" value="<?=Globals::ifobjectvarsetor($this->editpage, 'page_title', '')?>" />
+        </li>
+        <li>
+            <span class="desc">Menu Text</span>
+            <input type="text" name="menu_text" value="<?=Globals::ifobjectvarsetor($this->editpage, 'menu_text', '')?>" />
+        </li>
+        <li>
+            <span class="desc">Permalink</span>
+            <input type="text" name="permalink" value="<?=Globals::ifobjectvarsetor($this->editpage, 'permalink', '')?>"<?=($this->page_id == 1) ? ' disabled="disbaled"' : '' ;?> />
+        </li>
+        <li>
+            <span class="desc">Template</span>
+            <?php $defaultTemplate = Globals::ifobjectvarsetor($this->editpage, 'template', 'main.phtml'); ?>
+            <select name="template"<?=($this->page_id == 1) ? ' disabled="disbaled"' : '' ;?>>
+                <?=Globals::makeOptions($this->templates, $defaultTemplate); ?>
+            </select>
+        </li>
+        <li>
+            <span class="desc">Page Content</span>
+            <textarea name="page_content" id="page_content"><?=Globals::ifobjectvarsetor($this->editpage, 'page_content', '')?></textarea>
+        </li>
+        <li class="submitarea">
+            <input type="submit" name="submitbutton" value="Save Changes" id="savepagebutton" />
+            <input type="submit" name="submitbutton" value="Preview" id="previewbutton" />
+            <button type="button" id="cancelchanges">Cancel</button>
+        </li>
+    </ul>
+</form>

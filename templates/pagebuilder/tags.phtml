@@ -1,0 +1,23 @@
+<h1>Edit Meta Tags</h1>
+
+<form method="post" action="/pagebuilder/savetags/">
+    <input type="hidden" name="meta_id" value="<?=($this->meta_id) ? $this->meta_id : ''?>" />
+    <input type="hidden" name="page_id" value="<?=($this->page_id) ? $this->page_id : ''?>" />
+    <ul class="form">
+        <li>
+            <span class="desc">Page Title</span>
+            <input type="text" name="meta_title" value="<?=Globals::ifobjectvarsetor($this->metadata, 'meta_title', '')?>" class="metainput" />
+        </li>
+        <li>
+            <span class="desc">Keywords</span>
+            <input type="text" name="meta_keywords" value="<?=Globals::ifobjectvarsetor($this->metadata, 'meta_keywords', '')?>" class="metainput" />
+        </li>
+        <li>
+            <span class="desc">Description</span>
+            <textarea name="meta_description"><?=Globals::ifobjectvarsetor($this->metadata, 'meta_description', '')?></textarea>
+        </li>
+        <li class="submitarea">
+            <input type="submit" name="submitbutton" value="save changes" />
+        </li>
+    </ul>
+</form>

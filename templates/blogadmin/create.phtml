@@ -1,0 +1,48 @@
+<h1><?=$this->post_id ? 'Edit' : 'Create'?> Blog Post</h1>
+
+<form method="post" action="/blogadmin/savepost/" id="addpostform" enctype="multipart/form-data">
+    <input type="hidden" name="post_id" value="<?=($this->post_id) ? $this->post_id : ''?>" />
+    <ul class="form">
+        <li>
+            <span class="desc">Post Title</span>
+            <input type="text" name="post_title" value="<?=Globals::ifobjectvarsetor($this->post, 'post_title', '')?>" class="post_title_input" />
+        </li>
+        <li>
+            <?php $blog = Globals::ifobjectvarsetor($this->post, 'blog_id', '')?>
+            <span class="desc">Blog</span>
+            <select name="blog_id">
+                <option value="1"<?=($blog == 1) ? ' selected="selected"' : ''?>>General</option>
+                         </select>
+        </li>
+        <?php if(Globals::ifobjectvarsetor($this->post, 'post_image', false)):?>
+        <li>
+            <span class="desc">Current Image</span>
+            <img src="/images/blogimages/<?=$this->post['post_image']?>" width="328" height="203" alt="" />
+        </li>
+        <?php endif; ?>
+        <li>
+            <span class="desc">Image</span>
+            <input type="file" name="post_imagesmall" />
+        </li>
+        <?php $imagelocation = Globals::ifobjectvarsetor($this->post, 'post_imagelocation', 'left'); ?>
+        <li>
+            <span class="desc">List image Location</span>
+            <select name="post_imagelocation">
+                <option value="left"<?=($imagelocation == 'left') ? ' selected="selected"' : ''?>>Left</option>
+                <option value="right"<?=($imagelocation == 'right') ? ' selected="selected"' : ''?>>Right</option>
+            </select>
+        </li>
+        <li>
+            <span class="desc">Summary</span>
+            <textarea name="post_summary"><?=Globals::ifobjectvarsetor($this->post, 'post_summary', '')?></textarea>
+        </li>
+        <li>
+            <span class="desc">Content</span>
+            <textarea name="post_content" id="post_content"><?=Globals::ifobjectvarsetor($this->post, 'post_content', '')?></textarea>
+        </li>
+        <li class="submitarea">
+            <input type="submit" name="submitbutton" value="Save Changes" id="savepagebutton" />
+            <button type="button" id="cancelchanges">Cancel</button>
+        </li>
+    </ul>
+</form>

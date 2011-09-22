@@ -1,0 +1,36 @@
+<h2>Hi <?=$this->purchaseInfo['first_name']?> <?=$this->purchaseInfo['last_name']?></h2>
+<p>Below you will find the tracks you purchased on <strong><?=date('d/m/Y', strtotime($this->purchaseInfo['payment_date']))?></strong></p>
+
+<h3>Releases</h3>
+<table cellspacing="0">
+    <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach($this->downloadableReleases as $release): ?>
+        <tr>
+            <td><?=$release['name']?></td>
+            <td><?=$release['title']?></td>
+            <td><a href="/downloads/releases/<?=$release['release_file']?>">Download now</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<?php //var_dump($this->downloadableReleases); ?>
+
+<h3>Tracks</h3>
+<?php //var_dump($this->downloadableTracks); ?>
+<table cellspacing="0">
+    <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach($this->downloadableTracks as $track): ?>
+        <tr>
+            <td><?=$track['name']?></td>
+            <td><?=$track['track_name']?></td>
+            <td><a href="/download/downloadfile/filename/<?=$track['track_file']?>">Download now</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
