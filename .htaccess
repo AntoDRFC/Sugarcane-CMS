@@ -1,0 +1,15 @@
+php_value auto_prepend_file none
+
+
+php_value magic_quotes_gpc Off
+
+php_value display_errors On
+
+# turn on rewriting
+RewriteEngine On
+# for all files not found in the file system,
+# reroute to "index.php" bootstrap script,
+# keeping the query string intact.
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php [QSA,L]
