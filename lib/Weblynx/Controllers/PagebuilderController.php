@@ -277,111 +277,81 @@ class PagebuilderController extends Weblynx_Controllers_Base {
         }
     }
     
-    public function changeheadersAction() {
+    public function defaultheaderAction() {
+        $header = $this->dbMapper->getPagesHeader();
+        $this->view->pageHeader = $header;
+        
+        $this->view->header_id = '';
+        $this->view->page_id   = '';
+        
+        $this->view->extraHeaderText = ' Default ';
+        $this->view->postUrl = '/pagebuilder/savedefaultheader/';
+        
         $this->view->css[] = '/css/pagebuilder.css';
-
-		if(isset($_POST['submit'])) {
-			throw new Exception('Error: Write permissions not available in development mode, set the upload folder to CHMOD 0777');
-		}
         
-        $this->view->contentView = '/pagebuilder/changeheaders.phtml';
+        $this->view->contentView = '/pagebuilder/header.phtml';
         $this->renderView('admin.phtml');
-
     }
     
-    public function removeheaderimageAction() {
-        $imageId = $this->req->getParam('id');
+    public function headerAction() {
+        $page_id = (int) $this->req->getParam('page');
         
-        if(!$imageId) {
-            throw new Exception('No Image Id specified');
-        }
+        $header = $this->dbMapper->getPagesHeader($page_id);
+        $this->view->pageHeader = $header;
         
-        if($this->dbMapper->deleteRecord('header_images', 'header_id', $imageId)) {
-            $this->_redirect('/pagebuilder/changeheaders/');
-        } else {
-            throw new Exception('Failed to remove header image, please go back and try again.');
-        }
+        $this->view->header_id = !empty($header['header_id']) ? $header['header_id'] : '';
+        $this->view->page_id = $page_id;
+        
+        $this->view->postUrl = '/pagebuilder/saveheader/';
+        
+        $this->view->css[] = '/css/pagebuilder.css';
+        
+        $this->view->contentView = '/pagebuilder/header.phtml';
+        $this->renderView('admin.phtml');
     }
     
-    public function saveheaderimageAction() {
-        $save['url'] = $this->req->getParam('url', null);
+    public function savedefaultheaderAction() {
+        $caption = htmlentities($this->req->getParam('header_caption'));
         
-        // get last header image so we know his ordering
-        $images = $this->dbMapper->getHeaderImages();
-        $last = array_pop($images);
-        
-        $save['ordering'] = $last['ordering']+1;
+        $saveCaption['setting_id']    = 5;
+        $saveCaption['setting_title'] = 'page_header_caption';
+        $saveCaption['setting_value'] = $caption;
         
         $upload = new Zend_File_Transfer_Adapter_Http();
-        $dest_dir = $this->config->paths->base . '/images/header-images/';
+        $dest_dir = $this->config->paths->base . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'headers';
+        
         if(!file_exists($dest_dir)){
             if(!mkdir($dest_dir)){
-                throw new Exception("Could not create upload folder for the headers images to go into.");
+                throw new Exception("Could not create upload folder for the header images to go into.");
             }
         }
         $upload->setDestination($dest_dir);
 
-        $allowed_extensions = 'jpg,jpeg,gif,tiff,png,bmp';
+        $allowed_extensions = 'jpg,jpeg,bmp,gif,png,tiff';
         $upload->addValidator('Extension', false, array('extension' => $allowed_extensions, 'messages' => array(Zend_Validate_File_Extension::FALSE_EXTENSION => 'Invalid extension for file %value%')));
 
         $files = $upload->getFileInfo();
-        foreach ($files as $file => $info) {
-            if($upload->isUploaded($info['name']) && $upload->isValid($info['name'])) {
-                $upload->receive($info['name']);
-                $save['image'] = $info['name'];
-            } else {
-                throw new Exception('Failed to upload file, please go back and try again.');
+        
+        if($files['header_picture']['name']) {
+            foreach ($files as $file => $info) {
+                if($upload->isUploaded($info['name']) && $upload->isValid($info['name'])) {
+                    $upload->receive($info['name']);
+                    $savePicture['setting_id']    = 4;
+                    $savePicture['setting_title'] = 'page_header';
+                    $savePicture['setting_value'] = $info['name'];
+                    $picSaved = $this->dbMapper->saveRecord($savePicture, 'cms_settings', 'setting_id');
+                } else {
+                    throw new Exception('Error Reading Uploaded File.');
+                }
             }
-        }
-        
-        if($this->dbMapper->saveRecord($save, 'header_images', 'header_id')) {
-            $this->_redirect('/pagebuilder/changeheaders/');
         } else {
-            throw new Exception('Failed to save header image, please go back and try again.');
-        }
-    }
-    
-    public function moveheaderimagedownAction() {
-        $header_id = $this->req->getParam('id');
-        
-        $header = $this->adminMapper->getHeaderImageById($header_id);
-
-        $ordernum = $header['ordering']+1;
-        $swapwith = $this->adminMapper->getHeaderByOrderNumber($ordernum);
-
-        $save['header_id'] = $header['header_id'];
-        $save['ordering']  = $ordernum;
-        $this->dbMapper->saveRecord($save, 'header_images', 'header_id');
-        
-        $save['header_id'] = $swapwith['header_id'];
-        $save['ordering']  = $header['ordering'];
-        $this->dbMapper->saveRecord($save, 'header_images', 'header_id');
-
-        $this->_redirect('/pagebuilder/changeheaders/');
-    }
-    
-    public function moveheaderimageupAction() {
-        $header_id = $this->req->getParam('id');
-        
-        $header = $this->adminMapper->getHeaderImageById($header_id);
-        
-        $ordernum = $header['ordering']-1;
-        
-        if($ordernum < 1) {
-            throw new Exception('Could not re-order header image');
+            $picSaved = true;
         }
         
-        $swapwith = $this->adminMapper->getHeaderByOrderNumber($ordernum);
-
-        $save['header_id'] = $header['header_id'];
-        $save['ordering']  = $ordernum;
-        $this->dbMapper->saveRecord($save, 'header_images', 'header_id');
-        
-        $save['header_id'] = $swapwith['header_id'];
-        $save['ordering']  = $header['ordering'];
-        $this->dbMapper->saveRecord($save, 'header_images', 'header_id');
-        
-        $this->_redirect('/pagebuilder/changeheaders/');
+        if($this->dbMapper->saveRecord($saveCaption, 'cms_settings', 'setting_id') && $picSaved) {
+            $this->_redirect('/pagebuilder/');
+        } else {
+            throw new Exception('Failed to save default header, please go back and try again');
+        }
     }
-    
 }
