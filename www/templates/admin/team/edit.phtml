@@ -1,0 +1,21 @@
+<h1 style="font-size: 18px;"><?=$this->teammember_id ? 'Edit' : 'Add'?> Team Member</h1>
+<form method="post" action="/admin/team/saveteammember">
+    <ul class="form">
+        <input type="hidden" name="teammember_id" value="<?=$this->teammember_id ? $this->teammember_id : ''?>" />
+        <li>
+            <label class="desc">Position</label>
+            <input type="text" name="position" value="<?=Globals::ifobjectvarsetor($this->teammember, 'position', '')?>" />
+        </li>
+        <li>
+            <label class="desc">Forename</label>
+            <input type="text" name="first_name" value="<?=Globals::ifobjectvarsetor($this->teammember, 'first_name', '')?>" />
+        </li>
+        <li>
+            <label class="desc">Surname</label>
+            <input type="text" name="surname" value="<?=Globals::ifobjectvarsetor($this->teammember, 'surname', '')?>" />
+        </li>
+        <li id="submitarea">
+            <input type="submit" value="Save" />
+        </li>
+    </ul>
+</form>

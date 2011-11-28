@@ -1,0 +1,54 @@
+<h1><?=(isset($this->field_id)) ? 'Edit' : 'Add' ?> Field</h1>
+
+<form method="post" action="/admin/events/savefield">
+    <ul class="form">
+        <input type="hidden" name="event_field_id" value="<?=$this->field_id ? $this->field_id : ''?>" />
+        <li>
+            <label class="desc">Label</label>
+            <input type="text" name="label" value="<?=Globals::ifsetor($this->field['label'], '')?>" />
+        </li>
+        <li>
+            <label class="desc">Field Type</label>
+            <select name="field_type" id="field_type">
+                <option>- select -</option>
+                <?=$this->dropDownOptions?>
+            </select>
+        </li>
+        <li<?=($this->fieldType == 'textbox' || !$this->fieldType) ? ' style="display: none;"' : '' ?> id="extradetails">
+            <label class="desc">Extra details (drop down)</label>
+            <ul id="optionList">
+                <?php if(isset($this->extra_details)): ?>
+                    <?php foreach($this->extra_details as $detail): ?>
+                    <li>
+                        <input type="hidden" name="options[]" value="<?=$detail?>" />
+                        <?=$detail?> <span class="removeOption">x</span>
+                    </li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </ul>
+            <span id="addOption"><input type="text" name="option" /> <button type="button">Add</button></span>
+        </li>
+<!--
+        <li>
+            <label class="desc">Required</label>
+            <input type="checkbox" name="required" value="true" <?=(Globals::ifsetor($this->field['required'], 'N') == 'Y') ? 'checked="checked"' : ''?> />
+        </li>
+-->
+        <li>
+            <label class="desc">Display in summary</label>
+            <input type="checkbox" name="summary_display" value="true" <?=(Globals::ifsetor($this->field['summary_display'], 'N') == 'Y') ? 'checked="checked"' : ''?> />
+        </li>
+        <li>
+            <label class="desc">Display label</label>
+            <input type="checkbox" name="display_label" value="true" <?=(Globals::ifsetor($this->field['display_label'], 'N') == 'Y') ? 'checked="checked"' : ''?> />
+        </li>
+        <li>
+            <label class="desc">Label position</label>
+            <label><input type="radio" name="label_position" value="above" <?=(Globals::ifsetor($this->field['label_position'], '') == 'above') ? 'checked="checked"' : ''?>> Above</label> <a class="newtooltip">?<span><img src="/images/label_above.jpg" alt="Above" width="145" height="62" /></span></a>
+            <label><input type="radio" name="label_position" value="inline" <?=(Globals::ifsetor($this->field['label_position'], '') == 'inline') ? 'checked="checked"' : ''?>> Inline</label> <a class="newtooltip">?<span><img src="/images/label_inline.jpg" alt="Inline" width="145" height="62" /></span></a>
+        </li>
+        <li id="submitarea">
+            <input type="submit" value="Save" />
+        </li>
+    </ul>
+</form>

@@ -1,0 +1,140 @@
+<?php
+$name      = isset($this->formdata['data']['name']) ? $this->formdata['data']['name'] : '';
+$email     = isset($this->formdata['data']['email']) ? $this->formdata['data']['email'] : '';
+$mobile    = isset($this->formdata['data']['mobile']) ? $this->formdata['data']['mobile'] : '';
+$enquiry   = isset($this->formdata['data']['enquiry']) ? $this->formdata['data']['enquiry'] : '';
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?=$this->metaTitle?></title>
+<meta name="keywords" content="<?=$this->metaKeywords?>" />
+<meta name="description" content="<?=$this->metaDescription?>" />
+<link rel="shortcut icon" href="/images/ACTIVE.ico" />
+
+<link rel="stylesheet" type="text/css" href="/css/page-format.css"/>
+<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+<link rel="stylesheet" type="text/css" href="/css/topnav.css"/>
+<link rel="stylesheet" type="text/css" href="/css/subnav-dropdown.css"/>
+
+<!-- <link rel="stylesheet" type="text/css" href="/css/subnav-sidebar.css"/> -->
+<script type="text/javascript" src="/js/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/jquery-cycle.js"></script>
+<script type="text/javascript" src="/js/slideshow.js"></script>
+<?php foreach ($this->css as $css):?>
+    <link rel="stylesheet" type="text/css" href="<?=htmlentities($css, ENT_QUOTES, 'UTF-8')?>" />
+<?php endforeach;?>
+<?php foreach ($this->headJs as $headJs):?>
+    <script src="<?=htmlentities($headJs, ENT_QUOTES, 'UTF-8')?>" type="text/javascript"></script>
+<?php endforeach;?>
+</head>
+
+<body>
+<div id="backgrounds">
+    <?php foreach($this->headers as $header): ?>
+    <div style="background: url(/images/header/<?=$header['picture']?>) top left no-repeat;">
+        <div class="captionWrapper">
+            <p class="caption"><?=$header['caption']?></p>
+        </div>
+    </div>    
+    <?php endforeach; ?>
+</div>
+<div id="headerWrapper">
+    <div id="social">Members Login <img src="/images/facebook_round.png" alt="Facebook" width="32" height="32" /> <img src="/images/twitter_round.png" alt="twitter" width="32" height="32" /></div>
+    <div id="detailsNavWrapper">
+        <div id="detailsNav">
+            <p id="headerPhone">tel: 01302 831655<br />tel: 01302 834085 (Pro)</p>
+            <h1>wheatley golf club</h1>
+            <ul id="mainnav">
+            	<?=$this->nav?>
+        	</ul>
+        </div>
+    </div>
+    <div id="header">
+        <div id="sliderControls"><img src="/images/previous.png" alt="previous" width="28" height="27" id="previousSlideshow" /><img src="/images/pause.png" alt="Pause" width="28" height="27" id="pauseSlideshow" /><img src="/images/next.png" alt="next" width="28" height="27" id="nextSlideshow" /></div>
+        <img src="/images/logo.png" alt="logo" width="200" height="125" id="logo" />
+    </div>
+</div>
+
+<div id="main_wrapper">
+    <div id="page">
+        <div id="contentLeft">
+            <div id="events">
+                <h1>upcoming diary events…</h1>
+                <?php $i=1; foreach($this->nextThreeEvents as $event): ?>
+                <div class="event<?=($i == 3) ? ' last' : ''?>">
+                    <?=date('l jS F Y', strtotime($event['eventdate']))?><br />
+                    <strong><?=strtoupper($event['title'])?> - <?=strtoupper($event['additionalFields']['players'])?> - <?=strtoupper($event['additionalFields']['matchtype'])?></strong><br />
+                    <?=$event['additionalFields']['organiser']?> - First Tee - <?=$event['additionalFields']['firsttee']?>
+                </div>
+                <?php $i++; endforeach; ?>
+            </div>
+            <p class="viewall_link"><a href="/events">view all events</a></p>
+            <div id="news">
+            	<h1>latest club news…</h1>
+                <div id="news_items">
+                	<?php if(count($this->newsitems)): ?>
+                    	<?php $i=1; foreach($this->newsitems as $newsitem): ?>
+                    	<div class="newsitem<?=($i == count($this->newsitems)) ? ' last' : ''?>">
+                            <p><?=date('jS F Y', strtotime($newsitem['newsdate']))?></p>
+                            <p class="newstitle"><?=$newsitem['title']?></p>
+                            <p><?=$newsitem['preview']?> <a href="/news/view/article/<?=$newsitem['news_id']?>">more…</a></p>
+                        </div>
+                        <?php $i++; endforeach; ?>
+                    <?php else: ?>
+                        <p>No news items found</p>
+                    <?php endif; ?>
+            	</div>
+            </div>
+            <p class="viewall_link"><a href="/news">view all news</a></p>
+        </div>
+            
+        <div id="contentRight">
+    	    <div id="contentWrapper">
+        		<?=$this->page_title ? '<h1>' . $this->page_title . '</h1>' : '';?>
+    			<?php
+                if ($this->contentView):
+                    if ($file = $this->_script($this->contentView)):
+                            include $file;
+                    endif;
+                else:
+                    echo $this->content;
+                endif;
+            	?>
+            	
+            	<?php if(count($this->formdata['errors'])): ?>
+                    <div id="errors">
+                        <p><strong><?=count($this->formdata['errors'])?> error<?php if(count($this->formdata['errors']) > 1): ?>s were<?php else: ?> was<?php endif; ?>  encountered in your contact</strong><br />Please correct these errors and submit the form again.</p>
+                        <ul>
+                            <?php foreach($this->formdata['errors'] as $error): ?>
+                                <li><?=$error?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+                <form method="post" action="/contact/senddetails/" id="contact_form">
+                	<div class="form_field"><label for="name" class="form_desc">Name: <span class="required">(required)</span></label><input class="form_content textfield" type="text" name="name" value="<?=$name?>" /></div>
+                	<div class="form_field"><label for="email" class="form_desc">Email: <span class="required">(required)</span></label><input class="form_content textfield" type="text" name="email" value="<?=$email?>" /></div>
+                	<div class="form_field"><label for="mobile" class="form_desc">Mobile:</label><input class="form_content textfield" type="text" name="mobile" value="<?=$mobile?>" /></div>
+                   	<div class="form_field"><label for="enquiry" class="form_desc">Message: <span class="required">(required)</span></label><textarea class="form_content textarea" type="text" name="enquiry" id="enquiry" /><?=$enquiry?></textarea></div>
+                	<div class="form_base">
+                	   <input type="submit" name="submit_button" value="Submit"/>
+                    </div>
+                </form>
+        	</div>
+    	</div>
+        
+        <div id="footer">
+        	<p>This is the footer where useful information will go</p>
+            <p>Website produced by <a href="http://www.sugarcaneweb.co.uk" target="_blank">www.sugarcaneweb.co.uk</a></p>
+        </div>
+    </div>
+</div>
+
+<?php foreach ($this->js as $js):?>
+    <script src="<?=htmlentities($js, ENT_QUOTES, 'UTF-8')?>" type="text/javascript"></script>
+<?php endforeach;?>
+</body>
+</html>

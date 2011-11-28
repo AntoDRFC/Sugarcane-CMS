@@ -1,0 +1,357 @@
+/* CSS */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body {
+	background: #253f26 url('../images/BODY_BG.jpg') no-repeat top center;
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body, p, td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #6b6b6b;
+	line-height: 1.6em;
+    margin-bottom: 10px;
+}
+
+#main_wrapper {
+	padding: 0px;
+	position: relative;
+	z-index: 102;
+}
+
+#header_top_wrapper {
+	padding: 0px;
+	position: relative;
+	z-index: 101;
+	margin-top: -503px;
+	height: 503px;
+}
+
+#members_bar {
+	margin: 0px auto;
+	height: 47px;
+	width: 980px;
+	padding: 3px 0px 0px 0px;
+}
+
+#logo_bar {
+	height: 123px;
+	width: 100%;
+	background: url('../images/HEADER_BAR.png') no-repeat top center;
+}
+
+#header_page {
+    width: 980px;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+#logo {
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+    display: block;
+}
+
+#page {
+    width: 980px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+#headerWrapper {
+	padding: 0px;
+	height: 503px;
+    position: relative;
+    z-index: 100;
+    overflow: hidden;
+}
+#detailsNavWrapper {
+    overflow: hidden;
+    background: url(/images/header_green_bar.png);
+    padding: 14px 0;
+}
+#header {
+    width: 980px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 28px;
+}
+#detailsNav, #social {
+    width: 960px;
+	margin: 0 auto;
+}
+#social {
+    text-align: right;
+    padding: 8px 0;
+    color: #122F13;
+    font-family: Georgia;
+    font-size: 18px;
+    padding: 8px 0;
+    text-align: right;
+}
+#social span {
+    margin-right: 25px;
+}
+#social img {
+    vertical-align: middle;
+}
+#headerPhone {
+    float: right;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: Georgia;
+    margin-right: 50px;
+}
+#detailsNav h1 {
+    font-size: 50px;
+    line-height: 60px;
+    font-family: Georgia;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+#backgrounds div {
+    width: 100%;
+    height: 503px;
+}
+/*
+#header {
+    width: 980px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+*/
+
+#backgrounds .captionWrapper {
+    width: 980px;
+    margin: 378px auto 0 auto;
+}
+.caption {
+    background: #ffffff;
+    color: #000000;
+    font-size: 30px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+	border-radius: 20px;
+	behavior: url(/lib/PIE.htc);
+    font-family: Georgia;
+    padding: 0 10px;
+    float: left;
+}
+
+#sliderControls {
+    margin-top: 255px;
+    background: #122f13;
+    padding: 8px 10px;
+    float: left;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+	border-radius: 20px;
+	behavior: url(/lib/PIE.htc);
+}
+#sliderControls img {
+    cursor: pointer;
+}
+#pauseSlideshow {
+    margin: 0 10px;
+}
+
+#logo {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+
+/* CONTENT */
+#contentWrapper {
+    padding: 0 16px 16px 16px;
+    background: #ffffff;
+    -moz-border-radius-bottomleft: 20px;
+    -moz-border-radius-bottomright: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+	border-radius-bottomleft: 20px;
+	border-radius-bottomright: 20px;
+	behavior: url(/lib/PIE.htc);
+	overflow: hidden;
+}
+
+/* LEFT CONTENT */
+#contentLeft {
+    float: left;
+    margin: 16px 10px 0 10px;
+}
+#contentLeft p {
+    color: #ffffff;
+}
+
+/* RIGHT CONTENT */
+#contentRight {
+    background: url(/images/main_content_top.png) top right no-repeat;
+    margin-left: 323px;
+    margin-right: 10px;
+    padding-top: 34px;
+    margin-bottom: 20px;
+}
+
+/* EVENTS & NEWS */
+#events, #news {
+    width: 270px;
+    -moz-border-radius: 20px;
+	border-radius: 20px;
+	behavior: url(/lib/PIE.htc);
+    border: 1px solid #ffffff;
+    padding: 10px 15px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+div.event, div.newsitem {
+    margin-bottom: 18px;
+}
+#events div.last, #news div.last {
+    margin-bottom: 0;
+}
+#events h1, #news h1 {
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 27px;
+}
+#news p {
+    margin-bottom: 0;
+}
+.newstitle {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#news a {
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.viewall_link {
+    text-align: right;
+    margin-right: 15px;
+}
+.viewall_link a, .viewall_link a:hover {
+    color: #ffffff;
+}
+
+/* HOMEPAGE CONTENT PANEL */
+#contentPanel {
+    width: 197px;
+    height: 69px;
+    padding-top: 150px;
+    padding-left: 20px;
+    background: url(/images/weather_check.jpg) top left no-repeat;
+    float: right;
+    margin-left: 20px;
+}
+#contentPanel p {
+    margin-bottom: 5px;
+}
+#contentPanel span {
+    margin-left: 5px;
+}
+#contentPanel a {
+    font-size: 18px;
+    font-family: Georgia;
+    color: #122f13;
+}
+
+/* MEET THE TEAM */
+#meetteam {
+    background: #d3d3d3;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    behavior: url(/lib/PIE.htc);
+    padding: 10px 16px;
+    overflow: hidden;
+}
+#meetteam img {
+    float: right;
+    margin-left: 20px;
+}
+#peoplelist {
+    list-style: none;
+    width: 392px;
+    overflow: hidden;
+}
+#peoplelist li {
+    font-size: 14px;
+    color: #122f13;
+    float: left;
+    width: 50%;
+}
+
+/* FOOTER */
+
+#footer {
+	clear: both;
+    background-color: #cdcdcd;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    behavior: url(/lib/PIE.htc);
+    padding: 16px 16px 10px 16px;
+    margin-bottom: 20px;
+}
+#footer p {
+    color: #6b6b6b;
+    margin-bottom: 5px;
+}
+#footer a {
+    color: #6b6b6b;
+}
+
+/*CONTACT FORM STYLES*/
+#contact_form {
+    float: left;
+}
+.form_desc {
+	float: left;
+	width: 80px;
+	line-height: 15px;
+	padding-bottom: 6px;
+	margin-left: 0px;
+	font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+}
+.form_field {
+	padding-bottom: 6px;
+	clear: both;
+}
+.form_content {
+	width: 170px;
+	border: 1px solid #999;
+}
+.form_base {
+	padding-left: 80px;
+	padding-top: 10px;
+	padding-bottom:3px;
+	font-family: Verdana, Geneva, sans-serif; font-size: 10px; line-height: 1.2em
+}
+
+.form_base input {
+	margin-top: 4px;
+	padding-top: 0px;
+}
+.required {
+    color: #bfbfbf;
+}
+#enquiry {
+    height: 100px;
+    width: 320px;
+}
+
+#errors {
+    border: 1px solid #008F3D;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+#errors ul {
+    list-style: none;
+}

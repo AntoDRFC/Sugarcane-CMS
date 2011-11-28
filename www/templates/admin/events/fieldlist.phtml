@@ -1,0 +1,18 @@
+<h1>Events Form</h1>
+<p>Below you will find all the fields in the events form. To add a new field click on the 'Add field' button below.</p>
+
+<table class="admintable">
+    <tr>
+        <th>Label</th>
+        <th>Field Type</th>
+    </tr>
+    <?php foreach($this->fields as $field): ?>
+        <tr>
+            <td><?=$field['label']?></td>
+            <td><?=$field['field_type']?></td>
+            <td><a href="/admin/events/editfield/<?=$field['event_field_id']?>">Edit</a> <a href="/admin/events/deletefield/<?=$field['event_field_id']?>">Delete</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<a class="button" href="/admin/events/editfield">Add field</a>

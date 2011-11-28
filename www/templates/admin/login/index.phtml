@@ -1,0 +1,23 @@
+<h1>Sugarcane Web CMS Login</h1>
+<p>Please login to the Sugarcane Web CMS to continue</p>
+<form method="post" action="/admin/login/dologin/">
+    <ul class="form">
+        <?php if(!empty($_SESSION['loginfail'])) { ?>
+        <li class="error">
+            <?=$_SESSION['loginfail']?>
+            <?php unset($_SESSION['loginfail']); ?>
+        </li>
+        <?php } ?>
+        <li>
+            <label class="desc">Username</label>
+            <input type="text" name="sc_username" />
+        </li>
+        <li>
+            <label class="desc">Password</label>
+            <input type="password" name="sc_password" />
+        </li>
+        <li>
+            <input type="submit" value="Login" />
+        </li>
+    </ul>
+</form>

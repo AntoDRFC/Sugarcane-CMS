@@ -1,0 +1,15 @@
+<h1><?=$this->content_id ? 'Edit' : 'Create'?> Content</h1>
+
+<h1><?=ucfirst(Globals::ifobjectvarsetor($this->editregion, 'slug', ''))?></h1>
+
+    <input type="hidden" name="content_id" value="<?=($this->content_id) ? $this->content_id : ''?>" />
+    <ul class="form">
+        <li>
+            <span class="desc">Content</span>
+            <textarea name="page_content" id="page_content"><?=Globals::ifobjectvarsetor($this->editregion, 'content', '')?></textarea>
+        </li>
+        <li class="submitarea">
+            <input type="submit" name="submitbutton" value="Save Changes" id="savepagebutton" />
+            <button type="button" id="cancelchanges">Cancel</button>
+        </li>
+    </ul>

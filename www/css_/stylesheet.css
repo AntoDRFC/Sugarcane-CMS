@@ -1,0 +1,137 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body {
+    margin: 0px;
+	padding: 0px;
+}
+
+html, body, p, td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #6b6b6b;
+	line-height: 1.6em;
+}
+
+p { line-height: 1.6em;
+    margin-bottom: 10px;
+}
+
+hr {
+	height: 2px;
+	margin-top: 10px;
+	border: none;
+	border-top: 2px solid #55ce75;
+}
+img {
+	margin: 0px;
+}
+
+#clear {
+    clear: both;
+}
+
+a {outline: none;}
+a img {outline: none; border:0;}
+
+h1 {
+    font-family: Times;
+    font-size: 58px;
+    line-height: 50px;
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: #834bc8;
+    font-weight: normal;
+}
+
+h2 {
+    font-family: Times;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #834bc8;
+    font-weight: normal;
+}
+
+h3{font-family: Georgia, Arial, Helvetica, sans-serif; font-size: 22px ; color: #122f13; font-weight: normal; margin-bottom: 8px; line-height: 1.6em;}
+h4 {font-family: Georgia, Arial, Helvetica, sans-serif; font-size: 18px ; color: #122f13; font-weight: normal; margin-bottom: 8px; line-height: 1.6em; }
+h5 {font-family: Georgia, Arial, Helvetica, sans-serif; font-size: 14px ; color: #122f13; font-weight: bold; margin-bottom: 8px; line-height: 1.6em; }
+a {color: #122f13; font-weight: normal; text-decoration: none;}
+a:hover {color: #122f13; text-decoration: underline;}
+.right {float: right;}
+.left {float: left;}
+
+.underline {
+	border-bottom: 1px solid #00aeef;
+	padding: 0px 0px 8px 0px;
+}
+
+.white { color: #fff; }
+
+#content_wrapper ul, ol {
+	margin-left: 15px;
+}
+
+
+/* Ray Kohn Specific */
+#page {
+    padding-top: 24px;
+}
+
+#header {
+    background: url(/images/small_house.jpg) top left no-repeat;
+    padding-left: 220px;
+    margin-bottom: 38px;
+}
+
+#logo {
+    margin: 0 0 12px 0;
+    padding-top: 10px;
+}
+
+#content_wrapper #nav {
+    width: 480px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+}
+#nav li {
+    float: left;
+    margin: 0 5px 7px 0;
+    border-right: 1px solid #393939;
+    padding-right: 5px;
+    line-height: 12px;
+}
+#nav li.noborder {
+    border-right: none;
+}
+#nav a {
+    font-size: 14px;
+    display: block;
+}
+#nav .current a {
+    color: #003e8a;
+}
+
+#main_content {
+    margin-bottom: 20px;
+}
+#instruction {
+    color: #834bc8;
+    font-size: 20px;
+    clear: both;
+    margin-bottom: 40px;
+}
+
+#room_wrapper {
+    overflow: hidden;
+}
+#room {
+    float: left;
+}
+#room_map {
+    margin-left: 684px;
+}

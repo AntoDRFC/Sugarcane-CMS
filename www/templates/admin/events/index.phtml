@@ -1,0 +1,20 @@
+<h1>Events</h1>
+<p>Below you will find all the events you have created. To add a new event click on the 'Add event' button below. To modify the fields displayed on the event page, click on the 'Manage event form' button.</p>
+
+<table class="admintable">
+    <tr>
+        <th>Event Title</th>
+        <th>Event Date</th>
+        <th>Published</th>
+    </tr>
+    <?php foreach($this->events as $event): ?>
+        <tr>
+            <td><?=$event['title']?></td>
+            <td><?=date('d.m.Y', strtotime($event['eventdate']))?></td>
+            <td><?=($event['published'] == 1) ? 'Published' : 'Unpublished'?></td>
+            <td><a href="/admin/events/event/<?=$event['event_id']?>">Edit</a> <a href="/admin/events/deleteevent/<?=$event['event_id']?>">Delete</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<a class="button" href="/admin/events/event">Add Event</a><a class="button" href="/admin/events/manageform" style="width: 120px;">Manage Event Form</a>

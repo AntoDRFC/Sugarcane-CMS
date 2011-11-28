@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background: url(/images/admin/header_bg.jpg) top left repeat-x;
+    padding: 14px 0 15px 20px;
+    width: 1180px;
+}

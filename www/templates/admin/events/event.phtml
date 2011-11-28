@@ -1,0 +1,32 @@
+<h1><?=(isset($this->event_id)) ? 'Edit' : 'Add' ?> Event</h1>
+
+<form method="post" action="/admin/events/saveevent">
+    <ul class="form">
+        <input type="hidden" name="event_id" value="<?=$this->event_id ? $this->event_id : ''?>" />
+        <li>
+            <label class="desc">Title</label>
+            <input type="text" name="title" value="<?=Globals::ifsetor($this->event['title'], '')?>" />
+        </li>
+        <li>
+            <label class="desc">Event date</label>
+            <input type="text" name="eventdate" class="datefield" id="eventdate" value="<?=date('d/m/Y', strtotime(Globals::ifsetor($this->event['eventdate'], 'today')))?>" />
+        </li>
+        <li>
+            <label class="desc">Event summary</label>
+            <textarea name="summary" class="small_textarea"><?=Globals::ifsetor($this->event['summary'], '')?></textarea>
+        </li>
+        <li>
+            <label class="desc">Event description</label>
+            <textarea name="description" id="description"><?=Globals::ifsetor($this->event['description'], '')?></textarea>
+        </li>
+        <?=$this->formHtml;?>
+        <li>
+            <label class="desc">Published</label>
+            <?php $published = Globals::ifsetor($this->event['published'], '0');?>
+            <label><input type="radio" name="published" value="1" <?=$published == '1' ? 'checked="checked"' : ''?> /> Yes</label> <label><input type="radio" name="published" value="0" <?=$published == '0' ? 'checked="checked"' : ''?> /> No</label>
+        </li>
+        <li id="submitarea">
+            <input type="submit" value="Save" />
+        </li>
+    </ul>
+</form>

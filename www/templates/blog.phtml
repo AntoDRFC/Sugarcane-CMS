@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?=$this->metaTitle?></title>
+<meta name="keywords" content="<?=$this->metaKeywords?>" />
+<meta name="description" content="<?=$this->metaDescription?>" />
+<link rel="shortcut icon" href="/images/ACTIVE.ico" />
+<link rel="stylesheet" type="text/css" href="/css/page-format.css"/>
+<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+<link rel="stylesheet" type="text/css" href="/css/topnav.css"/>
+<link rel="stylesheet" type="text/css" href="/css/subnav-dropdown.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="/css/subnav-sidebar.css"/> -->
+<script type="text/javascript" src="/js/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<?php foreach ($this->css as $css):?>
+    <link rel="stylesheet" type="text/css" href="<?=htmlentities($css, ENT_QUOTES, 'UTF-8')?>" />
+<?php endforeach;?>
+<?php foreach ($this->headJs as $headJs):?>
+    <script src="<?=htmlentities($headJs, ENT_QUOTES, 'UTF-8')?>" type="text/javascript"></script>
+<?php endforeach;?>
+</head>
+
+<body>
+
+<div id="main_wrapper">
+
+<div id="header_wrapper">
+    Header
+</div>
+
+<div id="header_images">
+	<?php $i = 1; foreach($this->header_images as $image): ?>
+	<?php if($image['url']): ?><a href="<?=$image['url']?>" target="_blank"><?php endif; ?>
+    <div class="imagewrapper<?=($i == count($this->header_images)) ? ' last' : ''?>"><img width="176" height="176" src="/images/header-images/<?=$image['image']?>" alt="" />
+    </div>
+    <?php if($image['url']): ?></a><?php endif; ?>
+    <?php $i++; endforeach; ?>
+</div>
+
+<div id="nav_wrapper">
+    <ul id="mainnav">
+        <?=$this->nav?>
+    </ul>
+</div>
+
+<div id="content_wrapper">
+	<div id="text_wrapper">
+		<?=$this->page_title ? '<h1>' . $this->page_title . '</h1>' : '';?>
+			<?php
+            if ($this->contentView):
+                if ($file = $this->_script($this->contentView)):
+                        include $file;
+                endif;
+            else:
+                echo $this->content;
+            endif;
+        	?>
+	</div>
+	<div id="content_left">
+        Content Left
+	</div>
+    <div id="content_right">
+    	Content Right
+    </div>
+</div>
+
+<div id="subnav-wrapper">
+	<?php if(count($this->subpages)): ?>
+	<ul id="subnav">
+  		<?php foreach($this->subpages as $subpageitem): ?>
+        	<?php if($subpageitem['published'] == 1): ?>
+                <?php if($subpageitem['type'] == 'link'): ?>
+                 	<li><a href="<?=$subpageitem['permalink']?>"><?=$subpageitem['menu_text']?></a></li>
+           		<?php else: ?>
+               		<li><a href="/view/<?=$subpageitem['permalink']?>"><?=$subpageitem['menu_text']?></a></li>
+               		<?php endif; ?>
+                  		<?php endif; ?>
+              		<?php endforeach; ?>
+	</ul>
+   		<?php endif; ?>
+</div>
+
+<div id="footer_wrapper">
+	Footer
+</div>
+
+</div>
+
+<?php foreach ($this->js as $js):?>
+    <script src="<?=htmlentities($js, ENT_QUOTES, 'UTF-8')?>" type="text/javascript"></script>
+<?php endforeach;?>
+</body>
+</html>

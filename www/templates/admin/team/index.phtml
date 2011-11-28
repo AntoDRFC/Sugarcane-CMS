@@ -1,0 +1,25 @@
+<h1>Team</h1>
+<table class="admintable">
+    <thead>
+        <tr>
+            <th class="title">Position</th>
+            <th>Forename</th>
+            <th>Surname</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if(count($this->team)): ?>
+        <?php foreach($this->team as $team_member): ?>
+            <tr>
+                <td><?=$team_member['position']?></td>
+                <td><?=$team_member['first_name']?></td>
+                <td><?=$team_member['surname']?></td>
+                <td><a href="/admin/team/edit/member/<?=$team_member['teammember_id']?>">Edit</a> <a href="/admin/team/delete/member/<?=$team_member['teammember_id']?>" class="deletemember">Delete</a></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    </tbody>
+</table>
+
+<p><a class="button" href="/admin/team/edit/">Add Team Member</a></p>

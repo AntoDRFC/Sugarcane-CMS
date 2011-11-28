@@ -1,0 +1,23 @@
+<h1>Edit<?=$this->extraHeaderText?> Page Header</h1>
+
+<form method="post" action="<?=$this->postUrl?>" enctype="multipart/form-data">
+    <input type="hidden" name="header_id" value="<?=($this->header_id) ? $this->header_id : ''?>" />
+    <input type="hidden" name="page_id" value="<?=($this->page_id) ? $this->page_id : ''?>" />
+    <ul class="form">
+        <li>
+            <span class="desc">Current Header</span>
+            <img src="/images/headers/<?=Globals::ifobjectvarsetor($this->pageHeader, 'picture', '')?>" alt="<?=Globals::ifobjectvarsetor($this->pageHeader, 'caption', '')?>" width="480" /><br />
+        </li>
+        <li>
+            <span class="desc">New header</span>
+            <input type="file" name="header_picture" />
+        </li>
+        <li>
+            <span class="desc">Caption</span>
+            <input type="text" name="header_caption" value="<?=Globals::ifobjectvarsetor($this->pageHeader, 'caption', '')?>" class="metainput" />
+        </li>
+        <li class="submitarea">
+            <input type="submit" name="submitbutton" value="save changes" />
+        </li>
+    </ul>
+</form>

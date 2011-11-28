@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?=$this->metaTitle?></title>
+<meta name="keywords" content="<?=$this->metaKeywords?>" />
+<meta name="description" content="<?=$this->metaDescription?>" />
+<link rel="shortcut icon" href="/images/ACTIVE.ico" />
+
+<link rel="stylesheet" type="text/css" href="css/page-format.css" />
+<link rel="stylesheet" type="text/css" href="css/homepage.css" />
+
+<script type="text/javascript" src="/js/jquery-1.4.4.js"></script>
+<script type="text/javascript" src="/js/house.js"></script>
+<?php foreach ($this->css as $css):?>
+    <link rel="stylesheet" type="text/css" href="<?=htmlentities($css, ENT_QUOTES, 'UTF-8')?>" />
+<?php endforeach;?>
+<?php foreach ($this->headJs as $headJs):?>
+    <script src="<?=htmlentities($headJs, ENT_QUOTES, 'UTF-8')?>" type="text/javascript"></script>
+<?php endforeach;?>
+</head>
+
+<body>
+<div id="page">
+    <div id="content_wrapper">
+        <div id="homepage_content">
+            <p id="logo"><img src="images/logo.jpg" alt="Ray Kohn" width="299" height="110" /></p>
+            <p id="introtext">
+                <?php
+                if ($this->contentView):
+                    if ($file = $this->_script($this->contentView)):
+                            include $file;
+                    endif;
+                else:
+                    echo $this->content;
+                endif;
+                ?>
+            </p>
+            <p id="instruction">Click on a room window to learn more about Ray</p>
+        </div>
+        <div id="bedroom_1_popup" class="popup" style="display: none;">
+            <h2>Bedroom 1</h2>
+            <h1>Novellas</h1>
+            <p><img src="/images/bedroom_1.png" alt="Bedroom 1" width="383" height="272" /></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse augue nunc, elementum ut feugiat et, tincidunt sit amet nibh. Proin varius leo in metus placerat rhoncus. Nunc quis libero libero. Suspendisse libero ante, suscipit vel ultrices. Proin varius leo in metus placerat rhoncus.</p>
+            <p class="popuplink"><a href="/view/bedroom-1">Click here for much more on Novellas</a></p>
+        </div>
+        <div id="bedroom_2_popup" class="popup" style="display: none;">
+            <h2>Bedroom 2</h2>
+            <h1>Novellas</h1>
+            <p><img src="/images/bedroom_1.png" alt="Bedroom 1" width="383" height="272" /></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse augue nunc, elementum ut feugiat et, tincidunt sit amet nibh. Proin varius leo in metus placerat rhoncus. Nunc quis libero libero. Suspendisse libero ante, suscipit vel ultrices. Proin varius leo in metus placerat rhoncus.</p>
+            <p class="popuplink"><a href="/view/bedroom-2">Click here for much more on Novellas</a></p>
+        </div>
+        <div id="bedroom_3_popup" class="popup" style="display: none;">
+            <h2>Bedroom 3</h2>
+            <h1>Novellas</h1>
+            <p><img src="/images/bedroom_1.png" alt="Bedroom 1" width="383" height="272" /></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse augue nunc, elementum ut feugiat et, tincidunt sit amet nibh. Proin varius leo in metus placerat rhoncus. Nunc quis libero libero. Suspendisse libero ante, suscipit vel ultrices. Proin varius leo in metus placerat rhoncus.</p>
+            <p class="popuplink"><a href="/view/bedroom-3">Click here for much more on Novellas</a></p>
+        </div>
+        <div id="box_room_popup" class="popup" style="display: none;">
+            <h2>Bedroom 4</h2>
+            <h1>Novellas</h1>
+            <p><img src="/images/bedroom_1.png" alt="Bedroom 1" width="383" height="272" /></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse augue nunc, elementum ut feugiat et, tincidunt sit amet nibh. Proin varius leo in metus placerat rhoncus. Nunc quis libero libero. Suspendisse libero ante, suscipit vel ultrices. Proin varius leo in metus placerat rhoncus.</p>
+            <p class="popuplink"><a href="/view/bedroom-4">Click here for much more on Novellas</a></p>
+        </div>
+        <div id="house">
+            <div id="bedroom_1" class="window"><img src="/images/bedroom_1_window.png" alt="Bedroom 1" width="69" height="104" /></div>
+            <div id="bedroom_2" class="window"><img src="/images/bedroom_2_window.png" alt="Bedroom 2" width="71" height="105" /></div>
+            <div id="bedroom_3" class="window"><img src="/images/bedroom_3_window.png" alt="Bedroom 3" width="60" height="100" /></div>
+            <div id="box_room" class="window"><img src="/images/box_room_window.png" alt="Box Room" width="58" height="96" /></div>
+            <div id="gallery" class="window"><img src="/images/gallery_window.png" alt="Gallery" width="68" height="91" /></div>
+            <div id="library" class="window"><img src="/images/library_window.png" alt="Library" width="69" height="94" /></div>
+            <div id="hallway" class="window"><img src="/images/hallway_window.png" alt="Hallway" width="67" height="94" /></div>
+            <div id="music_room" class="window"><img src="/images/music_room_window.png" alt="Music Room" width="69" height="91" /></div>
+        </div>
+        
+        <div id="footer">
+            <p>Address and other necessary details to go in here</p>
+            <p>Website designed and built by <a href="http://www.sugarcaneweb.co.uk">www.sugarcaneweb.co.uk</a></p>
+        </div>
+    </div>
+</div>
+<?php foreach ($this->js as $js):?>
+    <script src="<?=htmlentities($js, ENT_QUOTES, 'UTF-8')?>" type="text/javascript"></script>
+<?php endforeach;?>
+</body>
+</html>

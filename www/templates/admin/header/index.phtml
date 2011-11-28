@@ -1,0 +1,31 @@
+<h1>Page Headers</h1>
+<p>Use the tool below to modify the header images that will be displayed on your website.</p>
+
+<?php if(!empty($this->message)): ?>
+    <p class="message"><?=$this->message?></p>
+<?php endif; ?>
+
+<form method="post" action="/admin/header/save/" enctype="multipart/form-data">
+    <div id="headers">
+        <?php for($i=0; $i<count($this->headers); $i++): ?>
+            <div class="headerWrapper">
+                <div class="headerLeft">
+                    <img src="/images/header/<?=$this->headers[$i]['picture']?>" alt="<?=$this->headers[$i]['caption']?>" width="480" />
+                    <input type="hidden" name="current_image[]" value="<?=$this->headers[$i]['picture']?>" />
+                </div>
+                <div class="headerRight">
+                    <p><span class="desc">Header image</span>
+                    <input type="file" name="header_picture[]" /></p>
+                    
+                    <p><span class="desc">Caption</span>
+                    <input type="text" name="header_caption[]" value="<?=$this->headers[$i]['caption']?>" class="caption_input" /></p>
+                    
+                    <p class="removeheader">Remove header</p>
+                </div>
+            </div>
+        <?php endfor; ?>
+    </div>
+    <div class="submitarea">
+        <button type="button" id="addHeader">Add new header image</button> <input type="submit" name="submitbutton" value="Save changes" />
+    </div>
+</form>

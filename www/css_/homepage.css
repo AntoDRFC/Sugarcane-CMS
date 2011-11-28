@@ -1,0 +1,138 @@
+h1 {
+    color: #ffffff;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+#homepage_content {
+    overflow: hidden;
+    margin-left: 540px;
+}
+
+#logo {
+    margin-top: 46px;
+}
+#introtext {
+    width: 364px;
+    line-height: 16px;
+}
+#instruction {
+    color: #003e8a;
+    font-size: 20px;
+}
+
+.popup {
+    width: 387px;
+    padding: 26px 22px;
+    border: 3px solid #ffffff;
+    position: absolute;
+    top: 22px;
+    left: 12px;
+    z-index: 100;
+    border-radius: 30px;
+    color: #ffffff;
+}
+.popup p {
+    line-height: 16px;
+}
+.popuplink {
+    margin: 0;
+}
+.popuplink a {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+#house {
+    width: 980px;
+    height: 821px;
+    background: url(/images/base_house.jpg) top left no-repeat;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.window {
+    cursor: pointer;
+}
+
+#bedroom_1 {
+    left: 263px;
+    position: absolute;
+    top: 312px;
+    width: 69px;
+    height: 104px;
+}
+#bedroom_1_popup {
+    background: #834bc8;
+}
+
+#bedroom_2 {
+    left: 369px;
+    position: absolute;
+    top: 312px;
+    width: 71px;
+    height: 105px;
+}
+#bedroom_2_popup {
+    background: #900000;
+}
+
+#bedroom_3 {
+    left: 671px;
+    position: absolute;
+    top: 305px;
+    width: 60px;
+    height: 100px;
+}
+#bedroom_3_popup {
+    background: #900000;
+}
+
+#box_room {
+    left: 761px;
+    position: absolute;
+    top: 305px;
+    width: 58px;
+    height: 96px;
+}
+#box_room_popup {
+    background: #f9e;
+}
+
+#gallery {
+    left: 267px;
+    position: absolute;
+    top: 534px;
+    width: 68px;
+    height: 91px;
+}
+
+#library {
+    left: 374px;
+    position: absolute;
+    top: 532px;
+    width: 69px;
+    height: 94px;
+}
+
+#hallway {
+    left: 664px;
+    position: absolute;
+    top: 535px;
+    width: 67px;
+    height: 94px;
+}
+
+#music_room {
+    left: 759px;
+    position: absolute;
+    top: 536px;
+    width: 69px;
+    height: 91px;
+}
+
+#footer {
+    padding-left: 50px;
+}

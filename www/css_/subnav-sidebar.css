@@ -1,0 +1,23 @@
+#subnav_wrapper {
+	padding: 10px 0px 0px 0px;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: normal;
+	width: 232px;
+}
+
+#subnav li {
+	list-style-type: none;
+	padding: 4px 10px 4px 10px;
+	background-color: #87ac40;
+    -moz-border-radius: 8px 8px 8px 8px;
+	border-radius: 8px 8px 8px 8px;
+	margin: 0px 0px 10px 0px;
+	display: block;
+}
+
+#subnav li { color: #ffffff; font-weight: normal; font-size: 14px;}
+#subnav li a:link { color: #ffffff; font-weight: normal; text-decoration: none; display: block; }
+#subnav li a:visited { color: #ffffff; font-weight: normal; text-decoration: none; }
+#subnav li a:hover { color: #ffffff; font-weight: normal; text-decoration: none; }
+#subnav li a:active, #subnav li p a:focus { color: #ffffff; font-weight: normal; text-decoration: none; }
