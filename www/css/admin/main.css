@@ -27,14 +27,19 @@ a {
     color: #676253;
 }
 
-.largertext {
-    font-size: 14px;
-}
-
 ul {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+.largertext {
+    font-size: 14px;
+}
+.message {
+    border: 1px solid #228B22;
+    background: #FFFFFF;
+    padding: 5px 10px;
 }
 
 /* HEADER */

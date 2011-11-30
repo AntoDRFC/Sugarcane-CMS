@@ -135,6 +135,31 @@ class Admin_PagebuilderController extends Sugarcane_Controllers_Base {
         }
     }
     
+    public function togglepublishedstateAction()
+    {
+        // grab the page id form the url
+        $pageId = $this->req->getParam('page');
+        $save['page_id'] = $pageId;
+        
+        // get the page details
+        $page = $this->dbMapper->getPage($pageId);
+        
+        // set the new published state
+        $save['published'] = ($page['published'] == 1) ? 0 : 1;
+        
+        // save the data to the database
+        if($this->dbMapper->saveRecord($save, 'pages', 'page_id')) {
+            $text = ($save['published'] == 1) ? 'published' : 'disabled';
+            
+            $_SESSION['message'] = sprintf("The %s '%s' has been successfully %s", $page['type'], $page['page_title'], $text);
+            
+            $this->_redirect('/admin/pagebuilder/');
+        } else {
+            $action = ($save['published'] == 1) ? 'publish' : 'disable';
+            throw new Exception('Failed to ' . $action . ' page');
+        }
+    }
+    
     public function publishAction() {
         $publish_page['page_id']   = $this->req->getParam('page');
         $publish_page['published'] = 1;

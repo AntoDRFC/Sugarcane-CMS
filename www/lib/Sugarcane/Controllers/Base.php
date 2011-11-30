@@ -120,6 +120,12 @@ class Sugarcane_Controllers_Base extends Zend_Controller_Action
             $this->view->formdata = $formdata;
         }
         
+        // send the message to view if one exists
+        if(!empty($_SESSION['message'])) {
+            $this->view->message = $_SESSION['message'];
+            unset($_SESSION['message']);
+        }
+        
         // we want the editable header images on every page, so here goes
         $this->view->headers = $this->dbMapper->getPageHeaders();
         
