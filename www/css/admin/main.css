@@ -5,6 +5,7 @@ body {
     font-size: 12px;
     background: #ddd6bd;
     color: #676253;
+    overflow: scroll;
 }
 
 h1 {
@@ -124,4 +125,14 @@ ul {
 .placeholder {
     border: 1px dotted #f9e;
     height: 20px;
+}
+.subpages {
+    margin-left: 24px;
+    margin-top: 10px;
+}
+.subpages li {
+    margin: 5px 0;
+}
+.subpages .pagetitle {
+    width: 235px;
 }

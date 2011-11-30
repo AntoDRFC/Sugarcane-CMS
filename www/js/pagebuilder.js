@@ -1,5 +1,20 @@
 $(document).ready(function() {
+
+    /* Collapse/Expand Pagelist */
+    $('.toggle').click(function() {
+        sublist = $(this).parent().find('ul:first');
+        
+        if($(sublist).is(':visible')) {
+            $(sublist).hide();
+            $(this).find('img').attr({'src':'/images/admin/closed_arrow.png', 'alt':'Expand'});
+        } else {
+            $(sublist).show();
+            console.log(this);
+            $(this).find('img').attr({'src':'/images/admin/open_arrow.png', 'alt':'Collapse'});
+        }
+    });
     
+    /* Delete webpage */
     $('.deletepage').click(function() {
         text = $(this).find('a').html();
         deleteText = text.slice(-4);
