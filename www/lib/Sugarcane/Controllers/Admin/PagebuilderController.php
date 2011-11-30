@@ -160,34 +160,19 @@ class Admin_PagebuilderController extends Sugarcane_Controllers_Base {
         }
     }
     
-    public function publishAction() {
-        $publish_page['page_id']   = $this->req->getParam('page');
-        $publish_page['published'] = 1;
-        
-        if($this->dbMapper->saveRecord($publish_page, 'pages', 'page_id')) {
-            $this->_redirect('/admin/pagebuilder/');
-        } else {
-            throw new Exception('Failed to publish page');
-        }
-    }
-    
-    public function disableAction() {
-        $disable_page['page_id']   = $this->req->getParam('page');
-        $disable_page['published'] = 0;
-        
-        if($this->dbMapper->saveRecord($disable_page, 'pages', 'page_id')) {
-            $this->_redirect('/admin/pagebuilder/');
-        } else {
-            throw new Exception('Failed to disable page');
-        }
-    }
-    
     public function deletepageAction() {
-        $page_id = $this->req->getParam('page');
+        $pageId = $this->req->getParam('page');
+        
+        // get the page details
+        $page = $this->dbMapper->getPage($pageId);
 
-        if($page_id > 1) {
-            if($this->dbMapper->deleteRecord('pages', 'page_id', $page_id)) {
-                $this->dbMapper->deleteChildren('pages', 'parent', $page_id);
+        if($pageId > 1) {
+            if($this->dbMapper->deleteRecord('pages', 'page_id', $pageId)) {
+                // TO BE HANDLED BY FOREIGN KEY!
+                $this->dbMapper->deleteChildren('pages', 'parent', $pageId);
+                
+                $_SESSION['message'] = sprintf("The %s '%s' has been deleted", $page['type'], $page['page_title']);
+                
                 $this->_redirect('/admin/pagebuilder/');
             } else {
                 throw new Exception('Failed to delete page, please go back and try again.');
