@@ -21,7 +21,9 @@ class Admin_PagebuilderController extends Sugarcane_Controllers_Base {
     }
     
     public function indexAction() {
-        $pages = $this->dbMapper->getPages();
+        // setup the initial filter to get the main pages
+        $filter['standalone'] = 'N';
+        $pages = $this->dbMapper->getPages($filter);
         
         // we need to re-order the pages into the right parent/subpage array
         $page_array = array();
@@ -35,11 +37,17 @@ class Admin_PagebuilderController extends Sugarcane_Controllers_Base {
         
         $this->view->pages = $page_array;
         
+        // setup the second filter to get the standalone pages
+        $filter['standalone'] = 'Y';
+        $pages = $this->dbMapper->getPages($filter);
+        
+        $this->view->standalonePages = $pages;
+        
+        // send the required javascript files to the view
         $this->view->js[] = '/js/jquery-ui-1.8.4.custom.min.js';
         $this->view->js[] = '/js/pagebuilder.js';
         $this->view->js[] = '/js/tooltip.js';
         
-        $this->view->css[]       = '/css/pagebuilder.css';
         $this->view->contentView = '/admin/pagebuilder/index.phtml';
         $this->renderView('admin.phtml');
     }
