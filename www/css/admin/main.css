@@ -1,10 +1,118 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: Georgia;
+    font-size: 12px;
+    background: #ddd6bd;
+    color: #676253;
+}
+
+h1 {
+    color: #676253;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+h2 {
+    color: #676253;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+a {
+    text-decoration: none;
+    color: #676253;
+}
+
+.largertext {
+    font-size: 14px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* HEADER */
+#header_wrapper {
+    background: url(/images/admin/header_bg.jpg) top left repeat-x;
 }
 
 #header {
-    background: url(/images/admin/header_bg.jpg) top left repeat-x;
+    margin: 0 auto;
     padding: 14px 0 15px 20px;
-    width: 1180px;
+    width: 960px;
+    margin-bottom: 10px;
+}
+
+#loggedinas {
+    float: right;
+    color: #ffffff;
+    margin-top: 15px;
+}
+#loggedinas a {
+    color: #ddd6bd;
+    margin-left: 8px;
+    margin-right: 20px;
+}
+
+/* NAV */
+#nav_wrapper {
+    background: #ddd6bd;
+    border-radius: 20px;
+    width: 200px;
+    float: left;
+}
+#nav {
+    margin: 0;
+}
+
+/* CONTENT */
+#content_wrapper {
+    margin: 0 auto;
+    padding: 10px 10px 15px 10px;
+    width: 960px;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#content {
+    float: left;
+    margin-left: 40px;
+    width: 700px;
+    padding-top: 10px;
+}
+
+/* PAGE LISTING */
+.pagelist {
+    margin: 30px 0;
+}
+.pagelist li {
+    line-height: 23px;
+    margin-bottom: 10px;
+}
+.pagelist span {
+    display: inline-block;
+}
+.pagelist .toggle {
+    margin-right: 6px;
+    cursor: pointer;
+}
+.pagelist .pagetitle {
+    width: 240px;
+}
+.pagelist .button a {
+    background: #ddd6bd;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 3px;
+    display: block;
+}
+.pagelist .button a:hover {
+    background: #676253;
+    color: #ffffff;
 }

@@ -35,13 +35,12 @@ class Admin_PagebuilderController extends Sugarcane_Controllers_Base {
         
         $this->view->pages = $page_array;
         
-        $this->view->js[] = '/js/jquery-1.4.2.min.js';
         $this->view->js[] = '/js/jquery-ui-1.8.4.custom.min.js';
         $this->view->js[] = '/js/pagebuilder.js';
         $this->view->js[] = '/js/tooltip.js';
         
         $this->view->css[]       = '/css/pagebuilder.css';
-        $this->view->contentView = '/pagebuilder/index.phtml';
+        $this->view->contentView = '/admin/pagebuilder/index.phtml';
         $this->renderView('admin.phtml');
     }
     
