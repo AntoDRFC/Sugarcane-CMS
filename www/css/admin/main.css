@@ -116,3 +116,11 @@ ul {
     background: #676253;
     color: #ffffff;
 }
+.ui-state-highlight {
+    height: 24px;
+    border: 1px dashed #ECECEC;
+}
+.placeholder {
+    border: 1px dotted #f9e;
+    height: 20px;
+}
